@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, session, g
 from flask_babel import Babel, gettext
 import os
 
+from database.db import get_db, init_db, seed_db
+
 app = Flask(__name__)
 app.secret_key = 'dev-secret-key-change-in-production'
 
@@ -17,8 +19,12 @@ app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
 app.config['LANGUAGES'] = LANGUAGES
 app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
 
-babel = Babel(app, locale_selector=lambda: session.get('language', 
+babel = Babel(app, locale_selector=lambda: session.get('language',
               request.accept_languages.best_match(LANGUAGES.keys()) or 'en'))
+
+with app.app_context():
+    init_db()
+    seed_db()
 
 def get_locale():
     """Get the current locale"""
