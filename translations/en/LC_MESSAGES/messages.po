@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-05-31 18:04+0300\n"
+"POT-Creation-Date: 2026-07-09 10:25+0300\n"
 "PO-Revision-Date: 2026-05-31 17:26+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -29,6 +29,14 @@ msgstr ""
 
 #: templates/base.html:54
 msgid "Track every pound. Own your finances."
+msgstr ""
+
+#: templates/base.html:56 templates/terms.html:1 templates/terms.html:6
+msgid "Terms and Conditions"
+msgstr ""
+
+#: templates/base.html:57
+msgid "Privacy Policy"
 msgstr ""
 
 #: templates/landing.html:1
@@ -57,7 +65,9 @@ msgstr ""
 msgid "Start tracking free"
 msgstr ""
 
-#: templates/landing.html:26
+#: templates/landing.html:26 templates/landing.html:34
+#: templates/landing.html:41 templates/landing.html:48
+#: templates/landing.html:55
 msgid "EGP"
 msgstr ""
 
@@ -111,6 +121,76 @@ msgstr ""
 
 #: templates/register.html:58
 msgid "Already have an account?"
+msgstr ""
+
+#: templates/terms.html:7
+msgid "Last updated: July 2026"
+msgstr ""
+
+#: templates/terms.html:10
+msgid "Acceptance of Terms"
+msgstr ""
+
+#: templates/terms.html:12
+msgid ""
+"By accessing or using Spendly, you agree to be bound by these\n"
+"        Terms and Conditions. If you do not agree with any part of these\n"
+"        terms, please do not use the service."
+msgstr ""
+
+#: templates/terms.html:17
+msgid "Use of Service"
+msgstr ""
+
+#: templates/terms.html:19
+msgid ""
+"Spendly is provided to help you track personal expenses and\n"
+"        understand your spending habits. You agree to use the service "
+"only\n"
+"        for lawful purposes and not to misuse it in any way that could\n"
+"        damage, disable, or impair the platform for yourself or other\n"
+"        users."
+msgstr ""
+
+#: templates/terms.html:26
+msgid "User Data"
+msgstr ""
+
+#: templates/terms.html:28
+msgid ""
+"The information you enter into Spendly, including expense\n"
+"        records and account details, is stored so that the service can\n"
+"        provide you with tracking and reporting features. You are\n"
+"        responsible for the accuracy of the data you provide and for\n"
+"        keeping your account credentials secure."
+msgstr ""
+
+#: templates/terms.html:35
+msgid "Limitations of Liability"
+msgstr ""
+
+#: templates/terms.html:37
+msgid ""
+"Spendly is provided on an \"as is\" basis without warranties of\n"
+"        any kind. We are not liable for any financial decisions made "
+"based\n"
+"        on data recorded in the app, nor for any loss of data, service\n"
+"        interruptions, or indirect damages arising from your use of the\n"
+"        service."
+msgstr ""
+
+#: templates/terms.html:44
+msgid "Changes to Terms"
+msgstr ""
+
+#: templates/terms.html:46
+msgid ""
+"We may update these Terms and Conditions from time to time. If\n"
+"        changes are made, the updated terms will be posted on this page "
+"with\n"
+"        a revised date. Continued use of Spendly after changes are posted"
+"\n"
+"        constitutes acceptance of the revised terms."
 msgstr ""
 
 #~ msgid ""
