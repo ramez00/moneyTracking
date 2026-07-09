@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-09 10:35+0300\n"
+"POT-Creation-Date: 2026-07-09 11:16+0300\n"
 "PO-Revision-Date: 2026-05-31 17:26+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ar\n"
@@ -57,7 +57,6 @@ msgid "money goes"
 msgstr "أموالك"
 
 #: templates/landing.html:12
-#, fuzzy
 msgid ""
 "Log expenses, understand your spending patterns, and take control of\n"
 "      your financial life — one transaction at a time."
@@ -69,11 +68,116 @@ msgstr ""
 msgid "Start tracking free"
 msgstr "ابدأ التتبع مجاناً"
 
-#: templates/landing.html:26 templates/landing.html:34
-#: templates/landing.html:41 templates/landing.html:48
-#: templates/landing.html:55
+#: templates/landing.html:22
+msgid "See how it works"
+msgstr "شاهد كيف يعمل"
+
+#: templates/landing.html:28
+msgid "March 2026"
+msgstr "مارس 2026"
+
+#: templates/landing.html:29 templates/landing.html:37
+#: templates/landing.html:44 templates/landing.html:51
+#: templates/landing.html:58
 msgid "EGP"
 msgstr "جنية"
+
+#: templates/landing.html:33
+msgid "Bills"
+msgstr "الفواتير"
+
+#: templates/landing.html:40
+msgid "Food"
+msgstr "الطعام"
+
+#: templates/landing.html:47
+msgid "Health"
+msgstr "الصحة"
+
+#: templates/landing.html:54
+msgid "Transport"
+msgstr "المواصلات"
+
+#: templates/landing.html:69
+msgid "Log expenses instantly"
+msgstr "سجل نفقاتك فوراً"
+
+#: templates/landing.html:71
+msgid ""
+"Add any expense in seconds. Category, amount, date, description —\n"
+"        all in one simple form."
+msgstr ""
+"أضف أي نفقة في ثوانٍ. الفئة والمبلغ والتاريخ والوصف — كل ذلك في نموذج "
+"بسيط واحد."
+
+#: templates/landing.html:77
+msgid "Understand your patterns"
+msgstr "افهم أنماط إنفاقك"
+
+#: templates/landing.html:79
+msgid ""
+"See exactly where your money goes with category breakdowns and\n"
+"        monthly summaries."
+msgstr "اعرف بالضبط أين تذهب أموالك من خلال تفصيل الفئات والملخصات الشهرية."
+
+#: templates/landing.html:85
+msgid "Filter by time period"
+msgstr "تصفية حسب الفترة الزمنية"
+
+#: templates/landing.html:87
+msgid ""
+"View your spending for any date range — last week, last month, or\n"
+"        a custom period."
+msgstr "اعرض إنفاقك لأي نطاق زمني — الأسبوع الماضي أو الشهر الماضي أو فترة مخصصة."
+
+#: templates/landing.html:96
+msgid "Ready to take control?"
+msgstr "هل أنت مستعد للتحكم في أموالك؟"
+
+#: templates/landing.html:98
+msgid "Join thousands of people who track their expenses with Spendly."
+msgstr "انضم إلى آلاف الأشخاص الذين يتتبعون نفقاتهم مع Spendly."
+
+#: templates/landing.html:101
+msgid "Create free account"
+msgstr "إنشاء حساب مجاني"
+
+#: templates/landing.html:117
+msgid "Close"
+msgstr "إغلاق"
+
+#: templates/landing.html:122
+msgid "How Spendly works"
+msgstr "كيف يعمل Spendly"
+
+#: templates/landing.html:128
+msgid "Create your free account"
+msgstr "أنشئ حسابك المجاني"
+
+#: templates/landing.html:130
+msgid ""
+"Sign up in seconds with your name, email, and a password —\n"
+"            no credit card required."
+msgstr ""
+"سجّل في ثوانٍ باستخدام اسمك وبريدك الإلكتروني وكلمة مرور — دون الحاجة "
+"إلى بطاقة ائتمان."
+
+#: templates/landing.html:138
+msgid "Log your first expense"
+msgstr "سجّل أول نفقة لك"
+
+#: templates/landing.html:140
+msgid ""
+"Enter the amount and choose a category — like Bills, Food,\n"
+"            or Transport — and Spendly starts tracking where your money\n"
+"            goes."
+msgstr ""
+"أدخل المبلغ واختر فئة — مثل الفواتير أو الطعام أو المواصلات — ويبدأ "
+"Spendly في تتبع أين تذهب أموالك."
+
+#: templates/landing.html:148
+msgid "Get started now"
+msgstr "ابدأ الآن"
 
 #: templates/login.html:7
 msgid "Welcome back"
@@ -149,8 +253,8 @@ msgid ""
 "        information from unauthorized access, loss, or misuse."
 msgstr ""
 "يتم تخزين بيانات حسابك ونفقاتك بشكل آمن في قاعدة بياناتنا. نتخذ إجراءات "
-"تقنية معقولة لحماية معلوماتك من الوصول غير المصرح به أو الفقدان أو "
-"إساءة الاستخدام."
+"تقنية معقولة لحماية معلوماتك من الوصول غير المصرح به أو الفقدان أو إساءة "
+"الاستخدام."
 
 #: templates/privacy.html:33
 msgid "Third Party Services"
