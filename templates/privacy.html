@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block title %}{{ _('Privacy Policy') }} —
+Spendly{% endblock %} {% block content %}
+
+<section class="legal-section">
+  <div class="legal-container">
+    <h1 class="legal-title">{{ _('Privacy Policy') }}</h1>
+    <p class="legal-updated">{{ _('Last updated: July 2026') }}</p>
+
+    <div class="legal-body">
+      <h2>{{ _('Data We Collect') }}</h2>
+      <p>
+        {{ _('When you create a Spendly account, we collect information such
+        as your name, email address, and password. We also collect the
+        expense records you add, including amounts, categories, dates, and
+        descriptions.') }}
+      </p>
+
+      <h2>{{ _('How We Use Your Data') }}</h2>
+      <p>
+        {{ _('We use your data to provide core features of the app, such as
+        logging expenses, generating spending summaries, and personalizing
+        your experience. We do not sell your personal data to third
+        parties.') }}
+      </p>
+
+      <h2>{{ _('Data Storage') }}</h2>
+      <p>
+        {{ _('Your account and expense data are stored securely in our
+        database. We take reasonable technical measures to protect your
+        information from unauthorized access, loss, or misuse.') }}
+      </p>
+
+      <h2>{{ _('Third Party Services') }}</h2>
+      <p>
+        {{ _('Spendly may use trusted third-party services for functions
+        such as hosting and analytics. These providers only receive the
+        information necessary to perform their services and are not
+        permitted to use your data for their own purposes.') }}
+      </p>
+
+      <h2>{{ _('Contact Us') }}</h2>
+      <p>
+        {{ _('If you have any questions about this Privacy Policy or how
+        your data is handled, please reach out to us through the contact
+        details provided on our website.') }}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

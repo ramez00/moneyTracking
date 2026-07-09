@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-09 10:25+0300\n"
+"POT-Creation-Date: 2026-07-09 10:35+0300\n"
 "PO-Revision-Date: 2026-05-31 17:26+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ar\n"
@@ -36,7 +36,7 @@ msgstr "تتبع كل جنية. امتلك أموالك."
 msgid "Terms and Conditions"
 msgstr "الشروط والأحكام"
 
-#: templates/base.html:57
+#: templates/base.html:57 templates/privacy.html:1 templates/privacy.html:6
 msgid "Privacy Policy"
 msgstr "سياسة الخصوصية"
 
@@ -103,6 +103,84 @@ msgstr "ليس لديك حساب؟"
 msgid "Create one free"
 msgstr "أنشئ واحداً مجاناً"
 
+#: templates/privacy.html:7 templates/terms.html:7
+msgid "Last updated: July 2026"
+msgstr "آخر تحديث: يوليو 2026"
+
+#: templates/privacy.html:10
+msgid "Data We Collect"
+msgstr "البيانات التي نجمعها"
+
+#: templates/privacy.html:12
+msgid ""
+"When you create a Spendly account, we collect information such\n"
+"        as your name, email address, and password. We also collect the\n"
+"        expense records you add, including amounts, categories, dates, "
+"and\n"
+"        descriptions."
+msgstr ""
+"عند إنشاء حساب في Spendly، نقوم بجمع معلومات مثل اسمك وعنوان بريدك "
+"الإلكتروني وكلمة المرور الخاصة بك. كما نقوم بجمع سجلات النفقات التي "
+"تضيفها، بما في ذلك المبالغ والفئات والتواريخ والأوصاف."
+
+#: templates/privacy.html:18
+msgid "How We Use Your Data"
+msgstr "كيف نستخدم بياناتك"
+
+#: templates/privacy.html:20
+msgid ""
+"We use your data to provide core features of the app, such as\n"
+"        logging expenses, generating spending summaries, and "
+"personalizing\n"
+"        your experience. We do not sell your personal data to third\n"
+"        parties."
+msgstr ""
+"نستخدم بياناتك لتوفير الميزات الأساسية للتطبيق، مثل تسجيل النفقات وإنشاء "
+"ملخصات الإنفاق وتخصيص تجربتك. نحن لا نبيع بياناتك الشخصية لأطراف ثالثة."
+
+#: templates/privacy.html:26
+msgid "Data Storage"
+msgstr "تخزين البيانات"
+
+#: templates/privacy.html:28
+msgid ""
+"Your account and expense data are stored securely in our\n"
+"        database. We take reasonable technical measures to protect your\n"
+"        information from unauthorized access, loss, or misuse."
+msgstr ""
+"يتم تخزين بيانات حسابك ونفقاتك بشكل آمن في قاعدة بياناتنا. نتخذ إجراءات "
+"تقنية معقولة لحماية معلوماتك من الوصول غير المصرح به أو الفقدان أو "
+"إساءة الاستخدام."
+
+#: templates/privacy.html:33
+msgid "Third Party Services"
+msgstr "خدمات الأطراف الثالثة"
+
+#: templates/privacy.html:35
+msgid ""
+"Spendly may use trusted third-party services for functions\n"
+"        such as hosting and analytics. These providers only receive the\n"
+"        information necessary to perform their services and are not\n"
+"        permitted to use your data for their own purposes."
+msgstr ""
+"قد يستخدم Spendly خدمات موثوقة من أطراف ثالثة لوظائف مثل الاستضافة "
+"والتحليلات. لا يحصل هؤلاء المزودون إلا على المعلومات اللازمة لأداء "
+"خدماتهم، ولا يُسمح لهم باستخدام بياناتك لأغراضهم الخاصة."
+
+#: templates/privacy.html:41
+msgid "Contact Us"
+msgstr "تواصل معنا"
+
+#: templates/privacy.html:43
+msgid ""
+"If you have any questions about this Privacy Policy or how\n"
+"        your data is handled, please reach out to us through the contact\n"
+"        details provided on our website."
+msgstr ""
+"إذا كانت لديك أي أسئلة حول سياسة الخصوصية هذه أو حول كيفية التعامل مع "
+"بياناتك، يرجى التواصل معنا عبر بيانات الاتصال الموضحة في موقعنا "
+"الإلكتروني."
+
 #: templates/register.html:1 templates/register.html:52
 msgid "Create account"
 msgstr "إنشاء حساب"
@@ -126,10 +204,6 @@ msgstr "على الأقل 8 أحرف"
 #: templates/register.html:58
 msgid "Already have an account?"
 msgstr "هل لديك حساب بالفعل؟"
-
-#: templates/terms.html:7
-msgid "Last updated: July 2026"
-msgstr "آخر تحديث: يوليو 2026"
 
 #: templates/terms.html:10
 msgid "Acceptance of Terms"
@@ -158,9 +232,9 @@ msgid ""
 "        damage, disable, or impair the platform for yourself or other\n"
 "        users."
 msgstr ""
-"يتم توفير Spendly لمساعدتك في تتبع نفقاتك الشخصية وفهم أنماط إنفاقك. "
-"أنت توافق على استخدام الخدمة فقط للأغراض القانونية وعدم إساءة استخدامها "
-"بأي طريقة قد تضر بالمنصة أو تعطلها أو تضعفها بالنسبة لك أو للمستخدمين "
+"يتم توفير Spendly لمساعدتك في تتبع نفقاتك الشخصية وفهم أنماط إنفاقك. أنت "
+"توافق على استخدام الخدمة فقط للأغراض القانونية وعدم إساءة استخدامها بأي "
+"طريقة قد تضر بالمنصة أو تعطلها أو تضعفها بالنسبة لك أو للمستخدمين "
 "الآخرين."
 
 #: templates/terms.html:26
@@ -176,8 +250,8 @@ msgid ""
 "        keeping your account credentials secure."
 msgstr ""
 "يتم تخزين المعلومات التي تدخلها في Spendly، بما في ذلك سجلات النفقات "
-"وتفاصيل الحساب، حتى تتمكن الخدمة من تزويدك بميزات التتبع وإعداد التقارير. "
-"أنت مسؤول عن دقة البيانات التي تقدمها وعن الحفاظ على أمان بيانات اعتماد "
+"وتفاصيل الحساب، حتى تتمكن الخدمة من تزويدك بميزات التتبع وإعداد التقارير."
+" أنت مسؤول عن دقة البيانات التي تقدمها وعن الحفاظ على أمان بيانات اعتماد "
 "حسابك."
 
 #: templates/terms.html:35
@@ -193,10 +267,10 @@ msgid ""
 "        interruptions, or indirect damages arising from your use of the\n"
 "        service."
 msgstr ""
-"يتم توفير Spendly \"كما هي\" دون أي ضمانات من أي نوع. نحن غير مسؤولين "
-"عن أي قرارات مالية تُتخذ بناءً على البيانات المسجلة في التطبيق، ولا عن "
-"أي فقدان للبيانات أو انقطاع في الخدمة أو أضرار غير مباشرة ناتجة عن "
-"استخدامك للخدمة."
+"يتم توفير Spendly \"كما هي\" دون أي ضمانات من أي نوع. نحن غير مسؤولين عن "
+"أي قرارات مالية تُتخذ بناءً على البيانات المسجلة في التطبيق، ولا عن أي "
+"فقدان للبيانات أو انقطاع في الخدمة أو أضرار غير مباشرة ناتجة عن استخدامك "
+"للخدمة."
 
 #: templates/terms.html:44
 msgid "Changes to Terms"
@@ -211,8 +285,8 @@ msgid ""
 "\n"
 "        constitutes acceptance of the revised terms."
 msgstr ""
-"قد نقوم بتحديث هذه الشروط والأحكام من وقت لآخر. في حال إجراء أي "
-"تغييرات، سيتم نشر الشروط المحدثة على هذه الصفحة مع تاريخ مراجعة جديد. "
-"يُعد استمرارك في استخدام Spendly بعد نشر التغييرات موافقة على الشروط "
+"قد نقوم بتحديث هذه الشروط والأحكام من وقت لآخر. في حال إجراء أي تغييرات، "
+"سيتم نشر الشروط المحدثة على هذه الصفحة مع تاريخ مراجعة جديد. يُعد "
+"استمرارك في استخدام Spendly بعد نشر التغييرات موافقة على الشروط "
 "المعدَّلة."
 

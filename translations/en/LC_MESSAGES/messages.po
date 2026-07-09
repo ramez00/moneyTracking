@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-09 10:25+0300\n"
+"POT-Creation-Date: 2026-07-09 10:35+0300\n"
 "PO-Revision-Date: 2026-05-31 17:26+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -35,7 +35,7 @@ msgstr ""
 msgid "Terms and Conditions"
 msgstr ""
 
-#: templates/base.html:57
+#: templates/base.html:57 templates/privacy.html:1 templates/privacy.html:6
 msgid "Privacy Policy"
 msgstr ""
 
@@ -99,6 +99,70 @@ msgstr ""
 msgid "Create one free"
 msgstr ""
 
+#: templates/privacy.html:7 templates/terms.html:7
+msgid "Last updated: July 2026"
+msgstr ""
+
+#: templates/privacy.html:10
+msgid "Data We Collect"
+msgstr ""
+
+#: templates/privacy.html:12
+msgid ""
+"When you create a Spendly account, we collect information such\n"
+"        as your name, email address, and password. We also collect the\n"
+"        expense records you add, including amounts, categories, dates, "
+"and\n"
+"        descriptions."
+msgstr ""
+
+#: templates/privacy.html:18
+msgid "How We Use Your Data"
+msgstr ""
+
+#: templates/privacy.html:20
+msgid ""
+"We use your data to provide core features of the app, such as\n"
+"        logging expenses, generating spending summaries, and "
+"personalizing\n"
+"        your experience. We do not sell your personal data to third\n"
+"        parties."
+msgstr ""
+
+#: templates/privacy.html:26
+msgid "Data Storage"
+msgstr ""
+
+#: templates/privacy.html:28
+msgid ""
+"Your account and expense data are stored securely in our\n"
+"        database. We take reasonable technical measures to protect your\n"
+"        information from unauthorized access, loss, or misuse."
+msgstr ""
+
+#: templates/privacy.html:33
+msgid "Third Party Services"
+msgstr ""
+
+#: templates/privacy.html:35
+msgid ""
+"Spendly may use trusted third-party services for functions\n"
+"        such as hosting and analytics. These providers only receive the\n"
+"        information necessary to perform their services and are not\n"
+"        permitted to use your data for their own purposes."
+msgstr ""
+
+#: templates/privacy.html:41
+msgid "Contact Us"
+msgstr ""
+
+#: templates/privacy.html:43
+msgid ""
+"If you have any questions about this Privacy Policy or how\n"
+"        your data is handled, please reach out to us through the contact\n"
+"        details provided on our website."
+msgstr ""
+
 #: templates/register.html:1 templates/register.html:52
 msgid "Create account"
 msgstr ""
@@ -121,10 +185,6 @@ msgstr ""
 
 #: templates/register.html:58
 msgid "Already have an account?"
-msgstr ""
-
-#: templates/terms.html:7
-msgid "Last updated: July 2026"
 msgstr ""
 
 #: templates/terms.html:10
