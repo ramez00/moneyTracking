@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% block title %}{{ _('Terms and Conditions') }} —
+Spendly{% endblock %} {% block content %}
+
+<section class="legal-section">
+  <div class="legal-container">
+    <h1 class="legal-title">{{ _('Terms and Conditions') }}</h1>
+    <p class="legal-updated">{{ _('Last updated: July 2026') }}</p>
+
+    <div class="legal-body">
+      <h2>{{ _('Acceptance of Terms') }}</h2>
+      <p>
+        {{ _('By accessing or using Spendly, you agree to be bound by these
+        Terms and Conditions. If you do not agree with any part of these
+        terms, please do not use the service.') }}
+      </p>
+
+      <h2>{{ _('Use of Service') }}</h2>
+      <p>
+        {{ _('Spendly is provided to help you track personal expenses and
+        understand your spending habits. You agree to use the service only
+        for lawful purposes and not to misuse it in any way that could
+        damage, disable, or impair the platform for yourself or other
+        users.') }}
+      </p>
+
+      <h2>{{ _('User Data') }}</h2>
+      <p>
+        {{ _('The information you enter into Spendly, including expense
+        records and account details, is stored so that the service can
+        provide you with tracking and reporting features. You are
+        responsible for the accuracy of the data you provide and for
+        keeping your account credentials secure.') }}
+      </p>
+
+      <h2>{{ _('Limitations of Liability') }}</h2>
+      <p>
+        {{ _('Spendly is provided on an "as is" basis without warranties of
+        any kind. We are not liable for any financial decisions made based
+        on data recorded in the app, nor for any loss of data, service
+        interruptions, or indirect damages arising from your use of the
+        service.') }}
+      </p>
+
+      <h2>{{ _('Changes to Terms') }}</h2>
+      <p>
+        {{ _('We may update these Terms and Conditions from time to time. If
+        changes are made, the updated terms will be posted on this page with
+        a revised date. Continued use of Spendly after changes are posted
+        constitutes acceptance of the revised terms.') }}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
