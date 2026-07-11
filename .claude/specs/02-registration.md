@@ -8,7 +8,7 @@ their name, email, and password. This is Step 2 of the roadmap: the
 form submission is not yet handled. This feature adds `POST /register`
 processing — server-side validation, a uniqueness check on email,
 password hashing with werkzeug, insertion into the existing `users`
-table, and a redirect to the login page on success. It turns the static
+table, and show sucess message then redirect to the login page. It turns the static
 registration form into a working sign-up flow, unblocking login (Step 3)
 and every authenticated feature that follows.
 

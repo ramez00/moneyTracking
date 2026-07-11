@@ -451,6 +451,21 @@ a {
   margin-bottom: 1.25rem;
 }
 
+.flash {
+  max-width: 420px;
+  margin: 1.25rem auto;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.flash-success {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
 .form-group {
   margin-bottom: 1.25rem;
 }
