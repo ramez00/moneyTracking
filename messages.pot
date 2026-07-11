@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-09 11:16+0300\n"
+"POT-Creation-Date: 2026-07-11 18:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,22 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
+
+#: app.py:73
+msgid "All fields are required."
+msgstr ""
+
+#: app.py:77
+msgid "Password must be at least 8 characters."
+msgstr ""
+
+#: app.py:81
+msgid "An account with that email already exists."
+msgstr ""
+
+#: app.py:85
+msgid "Account created — please sign in."
+msgstr ""
 
 #: templates/base.html:39 templates/landing.html:19 templates/login.html:1
 #: templates/login.html:40 templates/register.html:59
@@ -26,15 +42,15 @@ msgstr ""
 msgid "Get started"
 msgstr ""
 
-#: templates/base.html:54
+#: templates/base.html:61
 msgid "Track every pound. Own your finances."
 msgstr ""
 
-#: templates/base.html:56 templates/terms.html:1 templates/terms.html:6
+#: templates/base.html:63 templates/terms.html:1 templates/terms.html:6
 msgid "Terms and Conditions"
 msgstr ""
 
-#: templates/base.html:57 templates/privacy.html:1 templates/privacy.html:6
+#: templates/base.html:64 templates/privacy.html:1 templates/privacy.html:6
 msgid "Privacy Policy"
 msgstr ""
 

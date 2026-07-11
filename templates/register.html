@@ -13,7 +13,7 @@ endblock %} {% block content %}
       <div class="auth-error">{{ error }}</div>
       {% endif %}
 
-      <form method="POST" action="/register">
+      <form method="POST" action="{{ url_for('register') }}">
         <div class="form-group">
           <label for="name">{{ _('Full name') }}</label>
           <input

@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, session, g
+from flask import Flask, render_template, request, session, g, redirect, url_for, flash
 from flask_babel import Babel, gettext
+from werkzeug.security import generate_password_hash
 import os
 
-from database.db import get_db, init_db, seed_db
+from database.db import get_db, init_db, seed_db, get_user_by_email, create_user
 from alerts import send_visit_alert
 
 app = Flask(__name__)
@@ -61,8 +62,29 @@ def landing():
     return render_template("landing.html")
 
 
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        name = request.form.get("name", "").strip()
+        email = request.form.get("email", "").strip().lower()
+        password = request.form.get("password", "")
+
+        if not name or not email or not password:
+            error = gettext("All fields are required.")
+            return render_template("register.html", error=error)
+
+        if len(password) < 8:
+            error = gettext("Password must be at least 8 characters.")
+            return render_template("register.html", error=error)
+
+        if get_user_by_email(email) is not None:
+            error = gettext("An account with that email already exists.")
+            return render_template("register.html", error=error)
+
+        create_user(name, email, generate_password_hash(password))
+        flash(gettext("Account created — please sign in."), "success")
+        return redirect(url_for("login"))
+
     return render_template("register.html")
 
 
