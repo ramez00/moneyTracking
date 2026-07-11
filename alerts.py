@@ -4,18 +4,20 @@ Sends an email (IP, approximate location, timestamp, user-agent) to a
 configured address whenever the landing page is visited, throttled per IP
 and run off the request thread so it never delays the response.
 
+Email is sent via the Brevo HTTP API rather than raw SMTP, because
+PaaS hosts (Render's free tier included) commonly block outbound SMTP
+ports (25/465/587) to prevent spam abuse.
+
 Note: IP-based geolocation is approximate (city-level at best, often wrong
 for mobile/VPN/corporate networks) — do not treat it as a precise address.
 """
 import json
 import logging
 import os
-import smtplib
 import threading
 import time
 import urllib.error
 import urllib.request
-from email.message import EmailMessage
 
 logger = logging.getLogger("alerts")
 
@@ -43,10 +45,10 @@ def _load_dotenv():
 _load_dotenv()
 
 ALERT_TO = os.environ.get("ALERT_EMAIL_TO")
-SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.gmail.com")
-SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
-SMTP_USER = os.environ.get("SMTP_USER")
-SMTP_PASSWORD = os.environ.get("SMTP_PASSWORD")
+BREVO_API_KEY = os.environ.get("BREVO_API_KEY")
+SENDER_EMAIL = os.environ.get("SENDER_EMAIL")
+
+BREVO_API_URL = "https://api.brevo.com/v3/smtp/email"
 
 THROTTLE_SECONDS = 60 * 60  # 1 email per IP per hour
 
@@ -101,8 +103,8 @@ def _send_email(ip, location, timestamp, user_agent):
         name
         for name, value in (
             ("ALERT_EMAIL_TO", ALERT_TO),
-            ("SMTP_USER", SMTP_USER),
-            ("SMTP_PASSWORD", SMTP_PASSWORD),
+            ("BREVO_API_KEY", BREVO_API_KEY),
+            ("SENDER_EMAIL", SENDER_EMAIL),
         )
         if not value
     ]
@@ -110,22 +112,31 @@ def _send_email(ip, location, timestamp, user_agent):
         logger.warning("alerts: skipping email, missing env vars: %s", ", ".join(missing))
         return
 
-    message = EmailMessage()
-    message["Subject"] = "Spendly landing page visit"
-    message["From"] = SMTP_USER
-    message["To"] = ALERT_TO
-    message.set_content(
-        "New landing page visit\n\n"
-        f"IP address: {ip}\n"
-        f"Approximate location: {location} (city-level estimate, not exact)\n"
-        f"Timestamp: {timestamp}\n"
-        f"User-agent: {user_agent}\n"
+    payload = {
+        "sender": {"email": SENDER_EMAIL},
+        "to": [{"email": ALERT_TO}],
+        "subject": "Spendly landing page visit",
+        "textContent": (
+            "New landing page visit\n\n"
+            f"IP address: {ip}\n"
+            f"Approximate location: {location} (city-level estimate, not exact)\n"
+            f"Timestamp: {timestamp}\n"
+            f"User-agent: {user_agent}\n"
+        ),
+    }
+    request = urllib.request.Request(
+        BREVO_API_URL,
+        data=json.dumps(payload).encode("utf-8"),
+        method="POST",
+        headers={
+            "api-key": BREVO_API_KEY,
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
     )
 
-    with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=5) as server:
-        server.starttls()
-        server.login(SMTP_USER, SMTP_PASSWORD)
-        server.send_message(message)
+    with urllib.request.urlopen(request, timeout=5) as response:
+        response.read()
 
     logger.info("alerts: visit alert email sent for %s", ip)
 
@@ -134,7 +145,12 @@ def _run(ip, timestamp, user_agent):
     location = _lookup_location(ip)
     try:
         _send_email(ip, location, timestamp, user_agent)
-    except (smtplib.SMTPException, OSError) as e:
+    except urllib.error.HTTPError as e:
+        logger.warning(
+            "alerts: failed to send visit alert email for %s: HTTP %s %s",
+            ip, e.code, e.read().decode("utf-8", "replace"),
+        )
+    except (urllib.error.URLError, TimeoutError, OSError) as e:
         logger.warning("alerts: failed to send visit alert email for %s: %s", ip, e)
 
 
