@@ -8,6 +8,7 @@ Note: IP-based geolocation is approximate (city-level at best, often wrong
 for mobile/VPN/corporate networks) — do not treat it as a precise address.
 """
 import json
+import logging
 import os
 import smtplib
 import threading
@@ -15,6 +16,8 @@ import time
 import urllib.error
 import urllib.request
 from email.message import EmailMessage
+
+logger = logging.getLogger("alerts")
 
 
 def _load_dotenv():
@@ -82,7 +85,8 @@ def _lookup_location(ip):
     try:
         with urllib.request.urlopen(url, timeout=3) as response:
             data = json.loads(response.read().decode("utf-8"))
-    except (urllib.error.URLError, TimeoutError, ValueError):
+    except (urllib.error.URLError, TimeoutError, ValueError) as e:
+        logger.warning("alerts: geolocation lookup failed for %s: %s", ip, e)
         return "lookup failed"
 
     if data.get("status") != "success":
@@ -93,7 +97,17 @@ def _lookup_location(ip):
 
 
 def _send_email(ip, location, timestamp, user_agent):
-    if not (ALERT_TO and SMTP_USER and SMTP_PASSWORD):
+    missing = [
+        name
+        for name, value in (
+            ("ALERT_EMAIL_TO", ALERT_TO),
+            ("SMTP_USER", SMTP_USER),
+            ("SMTP_PASSWORD", SMTP_PASSWORD),
+        )
+        if not value
+    ]
+    if missing:
+        logger.warning("alerts: skipping email, missing env vars: %s", ", ".join(missing))
         return
 
     message = EmailMessage()
@@ -113,13 +127,15 @@ def _send_email(ip, location, timestamp, user_agent):
         server.login(SMTP_USER, SMTP_PASSWORD)
         server.send_message(message)
 
+    logger.info("alerts: visit alert email sent for %s", ip)
+
 
 def _run(ip, timestamp, user_agent):
     location = _lookup_location(ip)
     try:
         _send_email(ip, location, timestamp, user_agent)
-    except (smtplib.SMTPException, OSError):
-        pass
+    except (smtplib.SMTPException, OSError) as e:
+        logger.warning("alerts: failed to send visit alert email for %s: %s", ip, e)
 
 
 def send_visit_alert(request):
