@@ -3,6 +3,7 @@ from flask_babel import Babel, gettext
 import os
 
 from database.db import get_db, init_db, seed_db
+from alerts import send_visit_alert
 
 app = Flask(__name__)
 app.secret_key = 'dev-secret-key-change-in-production'
@@ -56,6 +57,7 @@ def inject_locale():
 
 @app.route("/")
 def landing():
+    send_visit_alert(request)
     return render_template("landing.html")
 
 
@@ -109,4 +111,6 @@ def delete_expense(id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    port = int(os.environ.get("PORT", 5001))
+    debug = os.environ.get("FLASK_DEBUG", "true").lower() == "true"
+    app.run(host="0.0.0.0", port=port, debug=debug)
