@@ -44,9 +44,14 @@ def _load_dotenv():
 
 _load_dotenv()
 
-ALERT_TO = os.environ.get("ALERT_EMAIL_TO")
-BREVO_API_KEY = os.environ.get("BREVO_API_KEY")
-SENDER_EMAIL = os.environ.get("SENDER_EMAIL")
+def _clean_env(name):
+    value = os.environ.get(name)
+    return value.strip() if value else value
+
+
+ALERT_TO = _clean_env("ALERT_EMAIL_TO")
+BREVO_API_KEY = _clean_env("BREVO_API_KEY")
+SENDER_EMAIL = _clean_env("SENDER_EMAIL")
 
 BREVO_API_URL = "https://api.brevo.com/v3/smtp/email"
 
@@ -150,7 +155,7 @@ def _run(ip, timestamp, user_agent):
             "alerts: failed to send visit alert email for %s: HTTP %s %s",
             ip, e.code, e.read().decode("utf-8", "replace"),
         )
-    except (urllib.error.URLError, TimeoutError, OSError) as e:
+    except (urllib.error.URLError, TimeoutError, OSError, ValueError) as e:
         logger.warning("alerts: failed to send visit alert email for %s: %s", ip, e)
 
 
