@@ -3,7 +3,8 @@ from flask_babel import Babel, gettext
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 
-from database.db import get_db, init_db, seed_db, get_user_by_email, create_user
+from database.db import (get_db, init_db, seed_db, get_user_by_email,
+                         create_user, get_user_by_id, get_expense_summary)
 from alerts import send_visit_alert
 
 app = Flask(__name__)
@@ -128,14 +129,26 @@ def logout():
     return redirect(url_for("landing"))
 
 
+@app.route("/profile")
+def profile():
+    user_id = session.get("user_id")
+    if not user_id:
+        flash(gettext("Please sign in to view your profile."), "error")
+        return redirect(url_for("login"))
+
+    user = get_user_by_id(user_id)
+    if user is None:
+        session.clear()
+        flash(gettext("Please sign in to view your profile."), "error")
+        return redirect(url_for("login"))
+
+    summary = get_expense_summary(user_id)
+    return render_template("profile.html", user=user, summary=summary)
+
+
 # ------------------------------------------------------------------ #
 # Placeholder routes — students will implement these                  #
 # ------------------------------------------------------------------ #
-
-
-@app.route("/profile")
-def profile():
-    return "Profile page — coming in Step 4"
 
 
 @app.route("/expenses/add")

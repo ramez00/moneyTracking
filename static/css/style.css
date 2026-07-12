@@ -466,6 +466,11 @@ a {
   color: var(--accent);
 }
 
+.flash-error {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
 .form-group {
   margin-bottom: 1.25rem;
 }

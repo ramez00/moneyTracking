@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-11 18:02+0300\n"
+"POT-Creation-Date: 2026-07-12 16:02+0300\n"
 "PO-Revision-Date: 2026-05-31 17:26+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,40 +18,60 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: app.py:73
+#: app.py:74
 msgid "All fields are required."
 msgstr ""
 
-#: app.py:77
+#: app.py:78
 msgid "Password must be at least 8 characters."
 msgstr ""
 
-#: app.py:81
+#: app.py:82
 msgid "An account with that email already exists."
 msgstr ""
 
-#: app.py:85
+#: app.py:86
 msgid "Account created — please sign in."
 msgstr ""
 
-#: templates/base.html:39 templates/landing.html:19 templates/login.html:1
+#: app.py:109
+msgid "Please enter your email and password."
+msgstr ""
+
+#: app.py:114
+msgid "Invalid email or password."
+msgstr ""
+
+#: app.py:128
+msgid "You've been signed out."
+msgstr ""
+
+#: app.py:136 app.py:142
+msgid "Please sign in to view your profile."
+msgstr ""
+
+#: templates/base.html:41
+msgid "Logout"
+msgstr ""
+
+#: templates/base.html:43 templates/landing.html:19 templates/login.html:1
 #: templates/login.html:40 templates/register.html:59
 msgid "Sign in"
 msgstr ""
 
-#: templates/base.html:41
+#: templates/base.html:45
 msgid "Get started"
 msgstr ""
 
-#: templates/base.html:61
+#: templates/base.html:66
 msgid "Track every pound. Own your finances."
 msgstr ""
 
-#: templates/base.html:63 templates/terms.html:1 templates/terms.html:6
+#: templates/base.html:68 templates/terms.html:1 templates/terms.html:6
 msgid "Terms and Conditions"
 msgstr ""
 
-#: templates/base.html:64 templates/privacy.html:1 templates/privacy.html:6
+#: templates/base.html:69 templates/privacy.html:1 templates/privacy.html:6
 msgid "Privacy Policy"
 msgstr ""
 
@@ -276,6 +296,50 @@ msgid ""
 "If you have any questions about this Privacy Policy or how\n"
 "        your data is handled, please reach out to us through the contact\n"
 "        details provided on our website."
+msgstr ""
+
+#: templates/profile.html:3 templates/profile.html:16
+msgid "Your profile"
+msgstr ""
+
+#: templates/profile.html:17
+msgid "Your account and spending at a glance"
+msgstr ""
+
+#: templates/profile.html:22
+msgid "Account"
+msgstr ""
+
+#: templates/profile.html:24
+msgid "Name"
+msgstr ""
+
+#: templates/profile.html:28
+msgid "Email"
+msgstr ""
+
+#: templates/profile.html:32
+msgid "Member since"
+msgstr ""
+
+#: templates/profile.html:39
+msgid "Spending summary"
+msgstr ""
+
+#: templates/profile.html:43
+msgid "Total spent"
+msgstr ""
+
+#: templates/profile.html:47
+msgid "Total expenses"
+msgstr ""
+
+#: templates/profile.html:54
+msgid "Spending by category"
+msgstr ""
+
+#: templates/profile.html:56
+msgid "No expenses yet."
 msgstr ""
 
 #: templates/register.html:1 templates/register.html:52
