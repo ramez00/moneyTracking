@@ -1,22 +1,14 @@
-{% extends "base.html" %}
-
-{% block title %}{{ _('Your profile') }} — Spendly{% endblock %}
-
-{% block head %}
+{% extends "base.html" %} {% block head %}
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename='css/profile.css') }}"
 />
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %} {% set category_classes = { 'Food':
+'cat-food', 'Shopping': 'cat-shopping', 'Transport': 'cat-transport', 'Bills':
+'cat-bills', 'Health': 'cat-health', 'Entertainment': 'cat-entertainment',
+'Other': 'cat-other', } %}
 <section class="profile-section">
   <div class="profile-container">
-    <div class="profile-header">
-      <h1 class="profile-title">{{ _('Your profile') }}</h1>
-      <p class="profile-subtitle">{{ _('Your account and spending at a glance') }}</p>
-    </div>
-
     <!-- Account -->
     <div class="profile-card">
       <h2 class="profile-card-title">{{ _('Account') }}</h2>
@@ -34,42 +26,81 @@
       </div>
     </div>
 
-    <!-- Spending summary -->
-    <div class="profile-card">
-      <h2 class="profile-card-title">{{ _('Spending summary') }}</h2>
-      <div class="profile-stats">
-        <div class="profile-stat">
-          <span class="profile-stat-value">{{ '%.2f'|format(summary.total) }}</span>
-          <span class="profile-stat-label">{{ _('Total spent') }}</span>
-        </div>
-        <div class="profile-stat">
-          <span class="profile-stat-value">{{ summary.count }}</span>
-          <span class="profile-stat-label">{{ _('Total expenses') }}</span>
-        </div>
+    <!-- Stat tiles -->
+    <div class="profile-stat-grid">
+      <div class="profile-stat-tile">
+        <span class="profile-stat-label">{{ _('Total spent') }}</span>
+        <span class="profile-stat-value"
+          >EGP {{ '{:,.2f}'.format(summary.total) }}</span
+        >
+      </div>
+      <div class="profile-stat-tile">
+        <span class="profile-stat-label">{{ _('Transactions') }}</span>
+        <span class="profile-stat-value">{{ summary.count }}</span>
+      </div>
+      <div class="profile-stat-tile">
+        <span class="profile-stat-label">{{ _('Top category') }}</span>
+        <span class="profile-stat-value">
+          {%- if summary.by_category -%} {{
+          _(summary.by_category[0]['category']) }} {%- else -%} — {%- endif -%}
+        </span>
       </div>
     </div>
 
-    <!-- Spending by category -->
-    <div class="profile-card">
-      <h2 class="profile-card-title">{{ _('Spending by category') }}</h2>
-      {% if summary.count == 0 %}
-      <p class="profile-empty">{{ _('No expenses yet.') }}</p>
-      {% else %}
-      <div class="profile-bars">
-        {% for row in summary.by_category %}
-        <div class="profile-bar-row">
-          <span class="profile-cat">{{ _(row['category']) }}</span>
-          <div class="mock-bar-track">
-            <div
-              class="mock-bar {% if loop.index0 % 4 %}mock-bar-{{ loop.index0 % 4 + 1 }}{% endif %}"
-              style="width: {{ (row['total'] / summary.by_category[0]['total'] * 100)|round(1) }}%"
-            ></div>
+    <!-- Transactions + category breakdown -->
+    <div class="profile-columns">
+      <div class="profile-card">
+        <h2 class="profile-card-title">{{ _('Recent transactions') }}</h2>
+        {% if expenses|length == 0 %}
+        <p class="profile-empty">{{ _('No expenses yet.') }}</p>
+        {% else %}
+        <div class="profile-table">
+          <div class="profile-table-head">
+            <span>{{ _('Date') }}</span>
+            <span>{{ _('Description') }}</span>
+            <span>{{ _('Category') }}</span>
+            <span>{{ _('Amount') }}</span>
           </div>
-          <span class="profile-amt">{{ '%.2f'|format(row['total']) }}</span>
+          {% for expense in expenses %}
+          <div class="profile-expense-row">
+            <span class="profile-exp-date">{{ expense['date'] }}</span>
+            <span class="profile-exp-desc">{{ expense['description'] }}</span>
+            <span
+              class="profile-cat-badge {{ category_classes.get(expense['category'], 'cat-other') }}"
+              >{{ _(expense['category']) }}</span
+            >
+            <span class="profile-amt"
+              >EGP {{ '{:,.2f}'.format(expense['amount']) }}</span
+            >
+          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
+        {% endif %}
       </div>
-      {% endif %}
+
+      <div class="profile-card">
+        <h2 class="profile-card-title">{{ _('By category') }}</h2>
+        {% if summary.count == 0 %}
+        <p class="profile-empty">{{ _('No expenses yet.') }}</p>
+        {% else %}
+        <div class="profile-bars">
+          {% for row in summary.by_category %}
+          <div class="profile-bar-row">
+            <span class="profile-cat">{{ _(row['category']) }}</span>
+            <div class="mock-bar-track">
+              <div
+                class="mock-bar {{ category_classes.get(row['category'], 'cat-other') }}"
+                style="width: {{ (row['total'] / summary.by_category[0]['total'] * 100)|round(1) }}%"
+              ></div>
+            </div>
+            <span class="profile-amt"
+              >EGP {{ '{:,.2f}'.format(row['total']) }}</span
+            >
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
     </div>
   </div>
 </section>
