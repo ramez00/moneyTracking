@@ -1,10 +1,15 @@
-from flask import Flask, render_template, request, session, g, redirect, url_for, flash
+from flask import (Flask, render_template, request, session, g, redirect,
+                   url_for, flash, jsonify, abort)
 from flask_babel import Babel, gettext
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 import os
 
-from database.db import get_db, init_db, seed_db, get_user_by_email, create_user
+from database.db import (get_db, init_db, seed_db, get_user_by_email,
+                         create_user, get_user_by_id, get_expense_summary,
+                         get_expenses_by_user, get_user_theme, save_user_theme,
+                         delete_user_theme)
 from alerts import send_visit_alert
+from palette import generate_palette, is_valid_hex
 
 app = Flask(__name__)
 app.secret_key = 'dev-secret-key-change-in-production'
@@ -98,23 +103,105 @@ def privacy():
     return render_template("privacy.html")
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        email = request.form.get("email", "").strip().lower()
+        password = request.form.get("password", "")
+
+        if not email or not password:
+            error = gettext("Please enter your email and password.")
+            return render_template("login.html", error=error)
+
+        user = get_user_by_email(email)
+        if user is None or not check_password_hash(user["password_hash"], password):
+            error = gettext("Invalid email or password.")
+            return render_template("login.html", error=error)
+
+        session["user_id"] = user["id"]
+        session["user_name"] = user["name"]
+        return redirect(url_for("profile"))
+
     return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    session.pop("user_id", None)
+    session.pop("user_name", None)
+    flash(gettext("You've been signed out."), "success")
+    return redirect(url_for("landing"))
+
+
+@app.route("/profile")
+def profile():
+    user_id = session.get("user_id")
+    if not user_id:
+        flash(gettext("Please sign in to view your profile."), "error")
+        return redirect(url_for("login"))
+
+    user = get_user_by_id(user_id)
+    if user is None:
+        session.clear()
+        flash(gettext("Please sign in to view your profile."), "error")
+        return redirect(url_for("login"))
+
+    summary = get_expense_summary(user_id)
+    expenses = get_expenses_by_user(user_id)
+    theme = get_user_theme(user_id)
+    return render_template("profile.html", user=user, summary=summary,
+                          expenses=expenses, theme=theme)
+
+
+@app.route("/api/generate-palette", methods=["POST"])
+def api_generate_palette():
+    if not session.get("user_id"):
+        abort(401)
+
+    data = request.get_json(silent=True) or {}
+    base_color = data.get("base_color", "")
+    if not is_valid_hex(base_color):
+        abort(400)
+
+    return jsonify(generate_palette(base_color))
+
+
+@app.route("/api/save-theme", methods=["POST"])
+def api_save_theme():
+    user_id = session.get("user_id")
+    if not user_id:
+        abort(401)
+
+    data = request.get_json(silent=True) or {}
+    base_color = data.get("base_color", "")
+    if not is_valid_hex(base_color):
+        abort(400)
+
+    palette = generate_palette(base_color)
+    save_user_theme(user_id, base_color, palette)
+    return jsonify({"base_color": base_color, "palette": palette})
+
+
+@app.route("/api/theme")
+def api_theme():
+    if not session.get("user_id"):
+        abort(401)
+
+    return jsonify(get_user_theme(session["user_id"]))
+
+
+@app.route("/api/reset-theme", methods=["POST"])
+def api_reset_theme():
+    if not session.get("user_id"):
+        abort(401)
+
+    delete_user_theme(session["user_id"])
+    return jsonify({"status": "ok"})
 
 
 # ------------------------------------------------------------------ #
 # Placeholder routes — students will implement these                  #
 # ------------------------------------------------------------------ #
-
-@app.route("/logout")
-def logout():
-    return "Logout — coming in Step 3"
-
-
-@app.route("/profile")
-def profile():
-    return "Profile page — coming in Step 4"
 
 
 @app.route("/expenses/add")

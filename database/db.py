@@ -1,3 +1,4 @@
+import json
 import os
 import sqlite3
 from datetime import date, timedelta
@@ -34,6 +35,16 @@ def init_db():
             category TEXT NOT NULL,
             date TEXT NOT NULL,
             description TEXT,
+            created_at TEXT DEFAULT (datetime('now')),
+            FOREIGN KEY (user_id) REFERENCES users (id)
+        )
+    """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS theme (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER UNIQUE NOT NULL,
+            base_color TEXT NOT NULL,
+            palette_json TEXT NOT NULL,
             created_at TEXT DEFAULT (datetime('now')),
             FOREIGN KEY (user_id) REFERENCES users (id)
         )
@@ -99,3 +110,84 @@ def create_user(name, email, password_hash):
     user_id = cursor.lastrowid
     conn.close()
     return user_id
+
+
+def get_user_by_id(user_id):
+    conn = get_db()
+    user = conn.execute(
+        "SELECT * FROM users WHERE id = ?", (user_id,)
+    ).fetchone()
+    conn.close()
+    return user
+
+
+def get_expenses_by_user(user_id):
+    conn = get_db()
+    expenses = conn.execute(
+        "SELECT id, amount, category, date, description FROM expenses "
+        "WHERE user_id = ? ORDER BY date DESC, id DESC",
+        (user_id,),
+    ).fetchall()
+    conn.close()
+    return expenses
+
+
+def get_expense_summary(user_id):
+    conn = get_db()
+    totals = conn.execute(
+        "SELECT COALESCE(SUM(amount), 0) AS total, COUNT(*) AS count "
+        "FROM expenses WHERE user_id = ?",
+        (user_id,),
+    ).fetchone()
+    by_category = conn.execute(
+        "SELECT category, SUM(amount) AS total FROM expenses "
+        "WHERE user_id = ? GROUP BY category ORDER BY total DESC",
+        (user_id,),
+    ).fetchall()
+    conn.close()
+    return {
+        "total": totals["total"],
+        "count": totals["count"],
+        "by_category": by_category,
+    }
+
+
+def get_user_theme(user_id):
+    conn = get_db()
+    theme = conn.execute(
+        "SELECT base_color, palette_json FROM theme WHERE user_id = ?", (user_id,)
+    ).fetchone()
+    conn.close()
+    if theme is None:
+        return None
+    return {
+        "base_color": theme["base_color"],
+        "palette": json.loads(theme["palette_json"]),
+    }
+
+
+def save_user_theme(user_id, base_color, palette):
+    conn = get_db()
+    palette_json = json.dumps(palette)
+    existing = conn.execute(
+        "SELECT id FROM theme WHERE user_id = ?", (user_id,)
+    ).fetchone()
+    if existing is None:
+        conn.execute(
+            "INSERT INTO theme (user_id, base_color, palette_json) VALUES (?, ?, ?)",
+            (user_id, base_color, palette_json),
+        )
+    else:
+        conn.execute(
+            "UPDATE theme SET base_color = ?, palette_json = ? WHERE user_id = ?",
+            (base_color, palette_json, user_id),
+        )
+    conn.commit()
+    conn.close()
+
+
+def delete_user_theme(user_id):
+    conn = get_db()
+    conn.execute("DELETE FROM theme WHERE user_id = ?", (user_id,))
+    conn.commit()
+    conn.close()

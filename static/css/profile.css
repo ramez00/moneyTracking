@@ -1,0 +1,443 @@
+/* ------------------------------------------------------------------ */
+/* Profile page                                                        */
+/* ------------------------------------------------------------------ */
+
+.profile-section {
+  min-height: calc(100vh - 60px - 100px);
+  padding: 3rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-container {
+  width: 100%;
+  max-width: 960px;
+}
+
+.profile-header {
+  margin-bottom: 2rem;
+}
+
+.profile-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.profile-subtitle {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+}
+
+.profile-card {
+  background: var(--paper-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-card-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* Account rows */
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.6rem 0;
+}
+
+.profile-row + .profile-row {
+  border-top: 1px solid var(--border-soft);
+}
+
+.profile-row-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.profile-row-value {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+/* Stat tiles */
+.profile-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-stat-tile {
+  background: var(--paper-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.profile-stat-value {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.profile-stat-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Transactions table + category breakdown, side by side */
+.profile-columns {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  align-items: start;
+  gap: 1.5rem;
+}
+
+/* Category breakdown (reuses .mock-bar-track / .mock-bar colours) */
+.profile-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile-bar-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 100px;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.profile-cat {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.profile-amt {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-align: right;
+}
+
+.profile-empty {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Recent transactions table */
+.profile-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-table-head {
+  display: grid;
+  grid-template-columns: 90px 1fr 110px 100px;
+  gap: 0.75rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.profile-expense-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 110px 100px;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+}
+
+.profile-expense-row + .profile-expense-row {
+  border-top: 1px solid var(--border-soft);
+}
+
+.profile-exp-date {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+
+.profile-exp-desc {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.profile-cat-badge {
+  display: inline-block;
+  width: fit-content;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+}
+
+/* Category color mapping, shared by bars and badges */
+.cat-food {
+  background: var(--accent);
+}
+.profile-cat-badge.cat-food {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.cat-shopping,
+.cat-transport {
+  background: var(--accent-2);
+}
+.profile-cat-badge.cat-shopping,
+.profile-cat-badge.cat-transport {
+  background: var(--accent-2-light);
+  color: var(--accent-2);
+}
+
+.cat-bills {
+  background: #5b7fa6;
+}
+.profile-cat-badge.cat-bills {
+  background: #e8eef4;
+  color: #5b7fa6;
+}
+
+.cat-health {
+  background: var(--danger);
+}
+.profile-cat-badge.cat-health {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+.cat-entertainment {
+  background: #8b5e83;
+}
+.profile-cat-badge.cat-entertainment {
+  background: #f3e9f1;
+  color: #8b5e83;
+}
+
+.cat-other {
+  background: var(--ink-faint);
+}
+.profile-cat-badge.cat-other {
+  background: var(--border-soft);
+  color: var(--ink-muted);
+}
+
+/* ------------------------------------------------------------------ */
+/* Appearance / theme picker                                          */
+/* ------------------------------------------------------------------ */
+
+.theme-help {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.theme-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.theme-picker-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.theme-color-input input[type="color"] {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: none;
+  cursor: pointer;
+}
+
+.theme-presets {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-preset {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.theme-preset:hover {
+  transform: scale(1.12);
+}
+
+.theme-preview {
+  background: var(--paper-warm);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.theme-preview-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.theme-preview-btn {
+  transition: background 0.2s;
+}
+
+.theme-preview-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.theme-swatches {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  min-height: 32px;
+}
+
+.theme-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.theme-swatch:hover {
+  transform: scale(1.08);
+}
+
+.theme-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.theme-toast {
+  align-self: flex-start;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-sm);
+}
+
+/* ------------------------------------------------------------------ */
+/* RTL (Arabic) Support                                                */
+/* ------------------------------------------------------------------ */
+
+html[dir="rtl"] .profile-container {
+  direction: rtl;
+}
+
+html[dir="rtl"] .profile-header,
+html[dir="rtl"] .profile-card-title {
+  text-align: right;
+}
+
+html[dir="rtl"] .profile-bar-row,
+html[dir="rtl"] .profile-expense-row,
+html[dir="rtl"] .profile-table-head {
+  direction: rtl;
+}
+
+html[dir="rtl"] .profile-amt {
+  text-align: left;
+}
+
+html[dir="rtl"] .theme-picker-controls,
+html[dir="rtl"] .theme-preview-row,
+html[dir="rtl"] .theme-actions {
+  direction: rtl;
+}
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                          */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 800px) {
+  .profile-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .profile-table-head {
+    display: none;
+  }
+
+  .profile-expense-row {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "date amt"
+      "desc desc"
+      "cat cat";
+    row-gap: 0.35rem;
+  }
+
+  .profile-exp-date {
+    grid-area: date;
+  }
+
+  .profile-amt {
+    grid-area: amt;
+  }
+
+  .profile-exp-desc {
+    grid-area: desc;
+  }
+
+  .profile-cat-badge {
+    grid-area: cat;
+  }
+}

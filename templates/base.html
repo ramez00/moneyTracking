@@ -36,10 +36,15 @@
               >AR</a
             >
           </div>
+          {% if session.user_id %}
+          <a href="{{ url_for('profile') }}">{{ session.user_name }}</a>
+          <a href="{{ url_for('logout') }}" class="nav-cta">{{ _('Logout') }}</a>
+          {% else %}
           <a href="{{ url_for('login') }}">{{ _('Sign in') }}</a>
           <a href="{{ url_for('register') }}" class="nav-cta"
             >{{ _('Get started') }}</a
           >
+          {% endif %}
         </div>
       </div>
     </nav>
