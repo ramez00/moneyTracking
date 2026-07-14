@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-12 16:02+0300\n"
+"POT-Creation-Date: 2026-07-14 09:19+0300\n"
 "PO-Revision-Date: 2026-05-31 17:26+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,35 +18,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: app.py:74
+#: app.py:84
 msgid "All fields are required."
 msgstr ""
 
-#: app.py:78
+#: app.py:88
 msgid "Password must be at least 8 characters."
 msgstr ""
 
-#: app.py:82
+#: app.py:92
 msgid "An account with that email already exists."
 msgstr ""
 
-#: app.py:86
+#: app.py:96
 msgid "Account created — please sign in."
 msgstr ""
 
-#: app.py:109
+#: app.py:119
 msgid "Please enter your email and password."
 msgstr ""
 
-#: app.py:114
+#: app.py:124
 msgid "Invalid email or password."
 msgstr ""
 
-#: app.py:128
+#: app.py:138
 msgid "You've been signed out."
 msgstr ""
 
-#: app.py:136 app.py:142
+#: app.py:146 app.py:152
 msgid "Please sign in to view your profile."
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: templates/base.html:43 templates/landing.html:19 templates/login.html:1
+#: templates/base.html:43 templates/landing.html:24 templates/login.html:1
 #: templates/login.html:40 templates/register.html:59
 msgid "Sign in"
 msgstr ""
@@ -97,112 +97,117 @@ msgid ""
 "      your financial life — one transaction at a time."
 msgstr ""
 
-#: templates/landing.html:17
-msgid "Start tracking free"
+#: templates/landing.html:18 templates/landing.html:108
+#: templates/landing.html:161
+msgid "Go to your profile"
 msgstr ""
 
 #: templates/landing.html:22
-msgid "See how it works"
+msgid "Start tracking free"
 msgstr ""
 
 #: templates/landing.html:28
+msgid "See how it works"
+msgstr ""
+
+#: templates/landing.html:34
 msgid "March 2026"
 msgstr ""
 
-#: templates/landing.html:29 templates/landing.html:37
-#: templates/landing.html:44 templates/landing.html:51
-#: templates/landing.html:58
+#: templates/landing.html:35 templates/landing.html:43
+#: templates/landing.html:50 templates/landing.html:57
+#: templates/landing.html:64
 msgid "EGP"
 msgstr ""
 
-#: templates/landing.html:33
+#: templates/landing.html:39 templates/profile.html:14
 msgid "Bills"
 msgstr ""
 
-#: templates/landing.html:40
+#: templates/landing.html:46 templates/profile.html:13
 msgid "Food"
 msgstr ""
 
-#: templates/landing.html:47
+#: templates/landing.html:53 templates/profile.html:14
 msgid "Health"
 msgstr ""
 
-#: templates/landing.html:54
+#: templates/landing.html:60 templates/profile.html:14
 msgid "Transport"
 msgstr ""
 
-#: templates/landing.html:69
+#: templates/landing.html:75
 msgid "Log expenses instantly"
 msgstr ""
 
-#: templates/landing.html:71
+#: templates/landing.html:77
 msgid ""
 "Add any expense in seconds. Category, amount, date, description —\n"
 "        all in one simple form."
 msgstr ""
 
-#: templates/landing.html:77
+#: templates/landing.html:83
 msgid "Understand your patterns"
 msgstr ""
 
-#: templates/landing.html:79
+#: templates/landing.html:85
 msgid ""
 "See exactly where your money goes with category breakdowns and\n"
 "        monthly summaries."
 msgstr ""
 
-#: templates/landing.html:85
+#: templates/landing.html:91
 msgid "Filter by time period"
 msgstr ""
 
-#: templates/landing.html:87
+#: templates/landing.html:93
 msgid ""
 "View your spending for any date range — last week, last month, or\n"
 "        a custom period."
 msgstr ""
 
-#: templates/landing.html:96
+#: templates/landing.html:102
 msgid "Ready to take control?"
 msgstr ""
 
-#: templates/landing.html:98
+#: templates/landing.html:104
 msgid "Join thousands of people who track their expenses with Spendly."
 msgstr ""
 
-#: templates/landing.html:101
+#: templates/landing.html:112
 msgid "Create free account"
 msgstr ""
 
-#: templates/landing.html:117
+#: templates/landing.html:129
 msgid "Close"
 msgstr ""
 
-#: templates/landing.html:122
+#: templates/landing.html:134
 msgid "How Spendly works"
 msgstr ""
 
-#: templates/landing.html:128
+#: templates/landing.html:140
 msgid "Create your free account"
 msgstr ""
 
-#: templates/landing.html:130
+#: templates/landing.html:142
 msgid ""
 "Sign up in seconds with your name, email, and a password —\n"
 "            no credit card required."
 msgstr ""
 
-#: templates/landing.html:138
+#: templates/landing.html:150
 msgid "Log your first expense"
 msgstr ""
 
-#: templates/landing.html:140
+#: templates/landing.html:152
 msgid ""
 "Enter the amount and choose a category — like Bills, Food,\n"
 "            or Transport — and Spendly starts tracking where your money\n"
 "            goes."
 msgstr ""
 
-#: templates/landing.html:148
+#: templates/landing.html:165
 msgid "Get started now"
 msgstr ""
 
@@ -298,48 +303,60 @@ msgid ""
 "        details provided on our website."
 msgstr ""
 
-#: templates/profile.html:3 templates/profile.html:16
-msgid "Your profile"
+#: templates/profile.html:13
+msgid "Shopping"
 msgstr ""
 
-#: templates/profile.html:17
-msgid "Your account and spending at a glance"
+#: templates/profile.html:14
+msgid "Entertainment"
 msgstr ""
 
-#: templates/profile.html:22
-msgid "Account"
+#: templates/profile.html:14
+msgid "Other"
 msgstr ""
 
-#: templates/profile.html:24
-msgid "Name"
-msgstr ""
-
-#: templates/profile.html:28
-msgid "Email"
-msgstr ""
-
-#: templates/profile.html:32
+#: templates/profile.html:25
 msgid "Member since"
 msgstr ""
 
-#: templates/profile.html:39
-msgid "Spending summary"
-msgstr ""
-
-#: templates/profile.html:43
+#: templates/profile.html:32
 msgid "Total spent"
 msgstr ""
 
-#: templates/profile.html:47
-msgid "Total expenses"
+#: templates/profile.html:38
+msgid "Transactions"
 msgstr ""
 
-#: templates/profile.html:54
-msgid "Spending by category"
+#: templates/profile.html:42
+msgid "Top category"
 msgstr ""
 
-#: templates/profile.html:56
+#: templates/profile.html:53
+msgid "Recent transactions"
+msgstr ""
+
+#: templates/profile.html:55 templates/profile.html:84
 msgid "No expenses yet."
+msgstr ""
+
+#: templates/profile.html:59
+msgid "Date"
+msgstr ""
+
+#: templates/profile.html:60
+msgid "Description"
+msgstr ""
+
+#: templates/profile.html:61
+msgid "Category"
+msgstr ""
+
+#: templates/profile.html:62
+msgid "Amount"
+msgstr ""
+
+#: templates/profile.html:82
+msgid "By category"
 msgstr ""
 
 #: templates/register.html:1 templates/register.html:52
@@ -431,11 +448,4 @@ msgid ""
 "\n"
 "        constitutes acceptance of the revised terms."
 msgstr ""
-
-#~ msgid ""
-#~ "Log expenses, understand your spending "
-#~ "patterns, and take control of your "
-#~ "financial life — one transaction at "
-#~ "a time."
-#~ msgstr ""
 

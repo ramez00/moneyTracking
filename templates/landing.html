@@ -13,10 +13,16 @@
       your financial life — one transaction at a time.') }}
     </p>
     <div class="hero-actions">
+      {% if session.user_id %}
+      <a href="{{ url_for('profile') }}" class="btn-primary"
+        >{{ _('Go to your profile') }}</a
+      >
+      {% else %}
       <a href="{{ url_for('register') }}" class="btn-primary"
         >{{ _('Start tracking free') }}</a
       >
       <a href="{{ url_for('login') }}" class="btn-ghost">{{ _('Sign in') }}</a>
+      {% endif %}
     </div>
     <button type="button" class="how-it-works-link" id="how-it-works-trigger">
       {{ _('See how it works') }}
@@ -97,9 +103,15 @@
     <p class="cta-body">
       {{ _('Join thousands of people who track their expenses with Spendly.') }}
     </p>
+    {% if session.user_id %}
+    <a href="{{ url_for('profile') }}" class="btn-primary"
+      >{{ _('Go to your profile') }}</a
+    >
+    {% else %}
     <a href="{{ url_for('register') }}" class="btn-primary"
       >{{ _('Create free account') }}</a
     >
+    {% endif %}
   </div>
 </section>
 
@@ -144,9 +156,15 @@
         </div>
       </li>
     </ol>
+    {% if session.user_id %}
+    <a href="{{ url_for('profile') }}" class="btn-primary modal-cta"
+      >{{ _('Go to your profile') }}</a
+    >
+    {% else %}
     <a href="{{ url_for('register') }}" class="btn-primary modal-cta"
       >{{ _('Get started now') }}</a
     >
+    {% endif %}
   </div>
 </div>
 

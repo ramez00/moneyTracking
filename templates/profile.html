@@ -7,6 +7,11 @@
 'cat-food', 'Shopping': 'cat-shopping', 'Transport': 'cat-transport', 'Bills':
 'cat-bills', 'Health': 'cat-health', 'Entertainment': 'cat-entertainment',
 'Other': 'cat-other', } %}
+{# category names come from the DB at runtime, so babel can't extract them
+   from the _(expense['category']) calls below — list them literally here
+   so `pybabel extract` picks them up for translation #}
+{% set _category_translation_hints = [_('Food'), _('Shopping'),
+_('Transport'), _('Bills'), _('Health'), _('Entertainment'), _('Other')] %}
 <section class="profile-section">
   <div class="profile-container">
     <!-- Account -->

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-12 16:02+0300\n"
+"POT-Creation-Date: 2026-07-14 09:19+0300\n"
 "PO-Revision-Date: 2026-05-31 17:26+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ar\n"
@@ -19,43 +19,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: app.py:74
+#: app.py:84
 msgid "All fields are required."
 msgstr "جميع الحقول مطلوبة."
 
-#: app.py:78
+#: app.py:88
 msgid "Password must be at least 8 characters."
 msgstr "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل."
 
-#: app.py:82
+#: app.py:92
 msgid "An account with that email already exists."
 msgstr "يوجد حساب مسجل بهذا البريد الإلكتروني بالفعل."
 
-#: app.py:86
+#: app.py:96
 msgid "Account created — please sign in."
 msgstr "تم إنشاء الحساب بنجاح — يرجى تسجيل الدخول."
 
-#: app.py:109
+#: app.py:119
 msgid "Please enter your email and password."
-msgstr ""
+msgstr "يرجى إدخال بريدك الإلكتروني وكلمة المرور."
 
-#: app.py:114
+#: app.py:124
 msgid "Invalid email or password."
-msgstr ""
+msgstr "البريد الإلكتروني أو كلمة المرور غير صحيحة."
 
-#: app.py:128
+#: app.py:138
 msgid "You've been signed out."
-msgstr ""
+msgstr "تم تسجيل خروجك."
 
-#: app.py:136 app.py:142
+#: app.py:146 app.py:152
 msgid "Please sign in to view your profile."
 msgstr "يرجى تسجيل الدخول لعرض ملفك الشخصي."
 
 #: templates/base.html:41
 msgid "Logout"
-msgstr ""
+msgstr "تسجيل الخروج"
 
-#: templates/base.html:43 templates/landing.html:19 templates/login.html:1
+#: templates/base.html:43 templates/landing.html:24 templates/login.html:1
 #: templates/login.html:40 templates/register.html:59
 msgid "Sign in"
 msgstr "تسجيل الدخول"
@@ -100,45 +100,50 @@ msgstr ""
 "سجل نفقاتك، وافهم أنماط إنفاقك، وتحكم في حياتك المالية — معاملة واحدة في "
 "المرة."
 
-#: templates/landing.html:17
+#: templates/landing.html:18 templates/landing.html:108
+#: templates/landing.html:161
+msgid "Go to your profile"
+msgstr "اذهب إلى ملفك الشخصي"
+
+#: templates/landing.html:22
 msgid "Start tracking free"
 msgstr "ابدأ التتبع مجاناً"
 
-#: templates/landing.html:22
+#: templates/landing.html:28
 msgid "See how it works"
 msgstr "شاهد كيف يعمل"
 
-#: templates/landing.html:28
+#: templates/landing.html:34
 msgid "March 2026"
 msgstr "مارس 2026"
 
-#: templates/landing.html:29 templates/landing.html:37
-#: templates/landing.html:44 templates/landing.html:51
-#: templates/landing.html:58
+#: templates/landing.html:35 templates/landing.html:43
+#: templates/landing.html:50 templates/landing.html:57
+#: templates/landing.html:64
 msgid "EGP"
 msgstr "جنية"
 
-#: templates/landing.html:33
+#: templates/landing.html:39 templates/profile.html:14
 msgid "Bills"
 msgstr "الفواتير"
 
-#: templates/landing.html:40
+#: templates/landing.html:46 templates/profile.html:13
 msgid "Food"
 msgstr "الطعام"
 
-#: templates/landing.html:47
+#: templates/landing.html:53 templates/profile.html:14
 msgid "Health"
 msgstr "الصحة"
 
-#: templates/landing.html:54
+#: templates/landing.html:60 templates/profile.html:14
 msgid "Transport"
 msgstr "المواصلات"
 
-#: templates/landing.html:69
+#: templates/landing.html:75
 msgid "Log expenses instantly"
 msgstr "سجل نفقاتك فوراً"
 
-#: templates/landing.html:71
+#: templates/landing.html:77
 msgid ""
 "Add any expense in seconds. Category, amount, date, description —\n"
 "        all in one simple form."
@@ -146,51 +151,51 @@ msgstr ""
 "أضف أي نفقة في ثوانٍ. الفئة والمبلغ والتاريخ والوصف — كل ذلك في نموذج "
 "بسيط واحد."
 
-#: templates/landing.html:77
+#: templates/landing.html:83
 msgid "Understand your patterns"
 msgstr "افهم أنماط إنفاقك"
 
-#: templates/landing.html:79
+#: templates/landing.html:85
 msgid ""
 "See exactly where your money goes with category breakdowns and\n"
 "        monthly summaries."
 msgstr "اعرف بالضبط أين تذهب أموالك من خلال تفصيل الفئات والملخصات الشهرية."
 
-#: templates/landing.html:85
+#: templates/landing.html:91
 msgid "Filter by time period"
 msgstr "تصفية حسب الفترة الزمنية"
 
-#: templates/landing.html:87
+#: templates/landing.html:93
 msgid ""
 "View your spending for any date range — last week, last month, or\n"
 "        a custom period."
 msgstr "اعرض إنفاقك لأي نطاق زمني — الأسبوع الماضي أو الشهر الماضي أو فترة مخصصة."
 
-#: templates/landing.html:96
+#: templates/landing.html:102
 msgid "Ready to take control?"
 msgstr "هل أنت مستعد للتحكم في أموالك؟"
 
-#: templates/landing.html:98
+#: templates/landing.html:104
 msgid "Join thousands of people who track their expenses with Spendly."
 msgstr "انضم إلى آلاف الأشخاص الذين يتتبعون نفقاتهم مع Spendly."
 
-#: templates/landing.html:101
+#: templates/landing.html:112
 msgid "Create free account"
 msgstr "إنشاء حساب مجاني"
 
-#: templates/landing.html:117
+#: templates/landing.html:129
 msgid "Close"
 msgstr "إغلاق"
 
-#: templates/landing.html:122
+#: templates/landing.html:134
 msgid "How Spendly works"
 msgstr "كيف يعمل Spendly"
 
-#: templates/landing.html:128
+#: templates/landing.html:140
 msgid "Create your free account"
 msgstr "أنشئ حسابك المجاني"
 
-#: templates/landing.html:130
+#: templates/landing.html:142
 msgid ""
 "Sign up in seconds with your name, email, and a password —\n"
 "            no credit card required."
@@ -198,11 +203,11 @@ msgstr ""
 "سجّل في ثوانٍ باستخدام اسمك وبريدك الإلكتروني وكلمة مرور — دون الحاجة إلى"
 " بطاقة ائتمان."
 
-#: templates/landing.html:138
+#: templates/landing.html:150
 msgid "Log your first expense"
 msgstr "سجّل أول نفقة لك"
 
-#: templates/landing.html:140
+#: templates/landing.html:152
 msgid ""
 "Enter the amount and choose a category — like Bills, Food,\n"
 "            or Transport — and Spendly starts tracking where your money\n"
@@ -211,7 +216,7 @@ msgstr ""
 "أدخل المبلغ واختر فئة — مثل الفواتير أو الطعام أو المواصلات — ويبدأ "
 "Spendly في تتبع أين تذهب أموالك."
 
-#: templates/landing.html:148
+#: templates/landing.html:165
 msgid "Get started now"
 msgstr "ابدأ الآن"
 
@@ -321,49 +326,61 @@ msgstr ""
 "بياناتك، يرجى التواصل معنا عبر بيانات الاتصال الموضحة في موقعنا "
 "الإلكتروني."
 
-#: templates/profile.html:3 templates/profile.html:16
-msgid "Your profile"
-msgstr "ملفك الشخصي"
+#: templates/profile.html:13
+msgid "Shopping"
+msgstr "التسوق"
 
-#: templates/profile.html:17
-msgid "Your account and spending at a glance"
-msgstr "حسابك ونفقاتك في لمحة"
+#: templates/profile.html:14
+msgid "Entertainment"
+msgstr "الترفيه"
 
-#: templates/profile.html:22
-msgid "Account"
-msgstr "الحساب"
+#: templates/profile.html:14
+msgid "Other"
+msgstr "أخرى"
 
-#: templates/profile.html:24
-msgid "Name"
-msgstr "الاسم"
-
-#: templates/profile.html:28
-msgid "Email"
-msgstr "البريد الإلكتروني"
-
-#: templates/profile.html:32
+#: templates/profile.html:25
 msgid "Member since"
 msgstr "عضو منذ"
 
-#: templates/profile.html:39
-msgid "Spending summary"
-msgstr "ملخص الإنفاق"
-
-#: templates/profile.html:43
+#: templates/profile.html:32
 msgid "Total spent"
 msgstr "إجمالي المصروف"
 
-#: templates/profile.html:47
-msgid "Total expenses"
-msgstr "إجمالي النفقات"
+#: templates/profile.html:38
+msgid "Transactions"
+msgstr "المعاملات"
 
-#: templates/profile.html:54
-msgid "Spending by category"
-msgstr "الإنفاق حسب الفئة"
+#: templates/profile.html:42
+msgid "Top category"
+msgstr "الفئة الأكثر إنفاقاً"
 
-#: templates/profile.html:56
+#: templates/profile.html:53
+msgid "Recent transactions"
+msgstr "أحدث المعاملات"
+
+#: templates/profile.html:55 templates/profile.html:84
 msgid "No expenses yet."
 msgstr "لا توجد نفقات بعد."
+
+#: templates/profile.html:59
+msgid "Date"
+msgstr "التاريخ"
+
+#: templates/profile.html:60
+msgid "Description"
+msgstr "الوصف"
+
+#: templates/profile.html:61
+msgid "Category"
+msgstr "الفئة"
+
+#: templates/profile.html:62
+msgid "Amount"
+msgstr "المبلغ"
+
+#: templates/profile.html:82
+msgid "By category"
+msgstr "حسب الفئة"
 
 #: templates/register.html:1 templates/register.html:52
 msgid "Create account"

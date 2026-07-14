@@ -75,12 +75,55 @@ a {
 }
 
 .nav-inner {
+  position: relative;
   max-width: var(--max-width);
   margin: 0 auto;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* reserve room for the fixed-left language switcher so it never
+     overlaps the brand — padding-left is physical, so this holds in
+     both LTR and RTL regardless of flex-direction reversal */
+  padding-left: 6.5rem;
+}
+
+/* Language switcher: pinned to the true left edge of the navbar,
+   independent of LTR/RTL flow */
+.language-selector {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  background: var(--paper-warm);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.lang-toggle {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  transition: background 0.2s, color 0.2s;
+}
+
+.lang-toggle:hover {
+  color: var(--ink);
+}
+
+.lang-toggle.active {
+  background: var(--accent);
+  color: var(--paper) !important;
+}
+
+.lang-toggle.active:hover {
+  background: var(--accent);
 }
 
 .nav-brand {
@@ -790,10 +833,6 @@ html[dir="rtl"] .nav-brand {
 html[dir="rtl"] .nav-links {
   flex-direction: row-reverse;
   gap: 1.5rem;
-}
-
-html[dir="rtl"] .language-selector {
-  margin-right: 1rem;
 }
 
 html[dir="rtl"] .hero-inner {

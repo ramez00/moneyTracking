@@ -19,23 +19,23 @@
   <body>
     <nav class="navbar">
       <div class="nav-inner">
+        <div class="language-selector">
+          <a
+            href="?lang=en"
+            class="lang-toggle {% if get_locale() == 'en' %}active{% endif %}"
+            >EN</a
+          >
+          <a
+            href="?lang=ar"
+            class="lang-toggle {% if get_locale() == 'ar' %}active{% endif %}"
+            >AR</a
+          >
+        </div>
         <a href="{{ url_for('landing') }}" class="nav-brand">
           <span class="brand-icon">◈</span>
           <span class="brand-name">Spendly</span>
         </a>
         <div class="nav-links">
-          <div class="language-selector">
-            <a
-              href="?lang=en"
-              class="lang-toggle {% if get_locale() == 'en' %}active{% endif %}"
-              >EN</a
-            >
-            <a
-              href="?lang=ar"
-              class="lang-toggle {% if get_locale() == 'ar' %}active{% endif %}"
-              >AR</a
-            >
-          </div>
           {% if session.user_id %}
           <a href="{{ url_for('profile') }}">{{ session.user_name }}</a>
           <a href="{{ url_for('logout') }}" class="nav-cta">{{ _('Logout') }}</a>
