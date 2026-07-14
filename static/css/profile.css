@@ -47,28 +47,47 @@
   border-bottom: 1px solid var(--border-soft);
 }
 
-/* Account rows */
-.profile-row {
+/* Account: avatar card */
+.profile-user-card {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 0.6rem 0;
+  align-items: center;
+  gap: 1.25rem;
 }
 
-.profile-row + .profile-row {
-  border-top: 1px solid var(--border-soft);
+.profile-avatar {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--paper-card);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.profile-row-label {
-  font-size: 0.85rem;
-  font-weight: 500;
+.profile-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.profile-user-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.profile-user-email {
+  font-size: 0.9rem;
   color: var(--ink-muted);
 }
 
-.profile-row-value {
-  font-size: 0.95rem;
-  color: var(--ink-soft);
+.profile-user-since {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
 }
 
 /* Stat tiles */

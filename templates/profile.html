@@ -10,19 +10,14 @@
 <section class="profile-section">
   <div class="profile-container">
     <!-- Account -->
-    <div class="profile-card">
-      <h2 class="profile-card-title">{{ _('Account') }}</h2>
-      <div class="profile-row">
-        <span class="profile-row-label">{{ _('Name') }}</span>
-        <span class="profile-row-value">{{ user['name'] }}</span>
-      </div>
-      <div class="profile-row">
-        <span class="profile-row-label">{{ _('Email') }}</span>
-        <span class="profile-row-value">{{ user['email'] }}</span>
-      </div>
-      <div class="profile-row">
-        <span class="profile-row-label">{{ _('Member since') }}</span>
-        <span class="profile-row-value">{{ user['created_at'][:10] }}</span>
+    {% set name_parts = user['name'].split() %}
+    {% set initials = (name_parts[0][0] ~ (name_parts[1][0] if name_parts|length > 1 else '')) | upper %}
+    <div class="profile-card profile-user-card">
+      <div class="profile-avatar">{{ initials }}</div>
+      <div class="profile-user-info">
+        <span class="profile-user-name">{{ user['name'] }}</span>
+        <span class="profile-user-email">{{ user['email'] }}</span>
+        <span class="profile-user-since">{{ _('Member since') }} {{ user['created_at']|friendly_date }}</span>
       </div>
     </div>
 

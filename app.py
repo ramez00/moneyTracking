@@ -2,6 +2,7 @@ from flask import (Flask, render_template, request, session, g, redirect,
                    url_for, flash, jsonify, abort)
 from flask_babel import Babel, gettext
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 import os
 
 from database.db import (get_db, init_db, seed_db, get_user_by_email,
@@ -55,6 +56,11 @@ def before_request():
 def inject_locale():
     """Make locale available in templates"""
     return {'get_locale': get_locale}
+
+
+@app.template_filter('friendly_date')
+def friendly_date(value):
+    return datetime.strptime(value[:19], '%Y-%m-%d %H:%M:%S').strftime('%d %b %Y')
 
 
 # ------------------------------------------------------------------ #
