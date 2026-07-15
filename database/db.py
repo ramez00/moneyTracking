@@ -1,4 +1,3 @@
-import json
 import os
 import sqlite3
 from datetime import date, timedelta
@@ -35,16 +34,6 @@ def init_db():
             category TEXT NOT NULL,
             date TEXT NOT NULL,
             description TEXT,
-            created_at TEXT DEFAULT (datetime('now')),
-            FOREIGN KEY (user_id) REFERENCES users (id)
-        )
-    """)
-    conn.execute("""
-        CREATE TABLE IF NOT EXISTS theme (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER UNIQUE NOT NULL,
-            base_color TEXT NOT NULL,
-            palette_json TEXT NOT NULL,
             created_at TEXT DEFAULT (datetime('now')),
             FOREIGN KEY (user_id) REFERENCES users (id)
         )
@@ -150,44 +139,3 @@ def get_expense_summary(user_id):
         "count": totals["count"],
         "by_category": by_category,
     }
-
-
-def get_user_theme(user_id):
-    conn = get_db()
-    theme = conn.execute(
-        "SELECT base_color, palette_json FROM theme WHERE user_id = ?", (user_id,)
-    ).fetchone()
-    conn.close()
-    if theme is None:
-        return None
-    return {
-        "base_color": theme["base_color"],
-        "palette": json.loads(theme["palette_json"]),
-    }
-
-
-def save_user_theme(user_id, base_color, palette):
-    conn = get_db()
-    palette_json = json.dumps(palette)
-    existing = conn.execute(
-        "SELECT id FROM theme WHERE user_id = ?", (user_id,)
-    ).fetchone()
-    if existing is None:
-        conn.execute(
-            "INSERT INTO theme (user_id, base_color, palette_json) VALUES (?, ?, ?)",
-            (user_id, base_color, palette_json),
-        )
-    else:
-        conn.execute(
-            "UPDATE theme SET base_color = ?, palette_json = ? WHERE user_id = ?",
-            (base_color, palette_json, user_id),
-        )
-    conn.commit()
-    conn.close()
-
-
-def delete_user_theme(user_id):
-    conn = get_db()
-    conn.execute("DELETE FROM theme WHERE user_id = ?", (user_id,))
-    conn.commit()
-    conn.close()

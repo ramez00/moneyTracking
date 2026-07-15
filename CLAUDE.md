@@ -11,17 +11,19 @@ Spendly is a lightweight personal expense tracker built with Flask and SQLite.
 ```
 spendly/
 ├── app.py              # All routes — single file, no blueprints
+├── alerts.py            # Visitor-alert emails (IP + geolocation) via Brevo HTTP API
 ├── database/
-│   └── db.py           # SQLite helpers: get_db(), init_db(), seed_db()
+│   └── db.py           # SQLite helpers: get_db(), init_db(), seed_db(), user/expense queries
 ├── templates/
 │   ├── base.html       # Shared layout — all templates must extend this
-│   └── *.html          # One template per page
+│   └── *.html          # One template per page (landing, register, login, profile, terms, privacy)
 ├── static/
 │   ├── css/
-│   │   ├── style.css       # Global styles
-│   │   └── landing.css     # Landing-page-only styles
+│   │   ├── style.css       # Global styles (includes landing-page styles — no separate landing.css)
+│   │   └── profile.css     # Profile-page-only styles
 │   └── js/
 │       └── main.js         # Vanilla JS only
+├── translations/        # Flask-Babel catalogs (en, ar) — run pybabel to update
 └── requirements.txt
 ```
 
@@ -94,18 +96,25 @@ pytest -s
 
 ## Implemented vs stub routes
 
-| Route                       | Status                                |
-| --------------------------- | ------------------------------------- |
-| `GET /`                     | Implemented — renders `landing.html`  |
-| `GET /register`             | Implemented — renders `register.html` |
-| `GET /login`                | Implemented — renders `login.html`    |
-| `GET /logout`               | Stub — Step 3                         |
-| `GET /profile`              | Stub — Step 4                         |
-| `GET /expenses/add`         | Stub — Step 7                         |
-| `GET /expenses/<id>/edit`   | Stub — Step 8                         |
-| `GET /expenses/<id>/delete` | Stub — Step 9                         |
+| Route                       | Status                                                            |
+| --------------------------- | ----------------------------------------------------------------- |
+| `GET /`                     | Implemented — renders `landing.html`, fires a visitor alert email |
+| `GET, POST /register`       | Implemented — Step 2                                              |
+| `GET /terms`                | Implemented — renders `terms.html`                                |
+| `GET /privacy`              | Implemented — renders `privacy.html`                              |
+| `GET, POST /login`          | Implemented — Step 3                                              |
+| `GET /logout`               | Implemented — Step 3                                              |
+| `GET /profile`              | Implemented — Step 4, spending summary dashboard                  |
+| `GET /expenses/add`         | Stub — Step 7                                                     |
+| `GET /expenses/<id>/edit`   | Stub — Step 8                                                     |
+| `GET /expenses/<id>/delete` | Stub — Step 9                                                     |
 
 **Do not implement a stub route unless the active task explicitly targets that step.**
+
+Note: a base-color theme-picker feature (DB table, `/api/generate-palette`, `/api/save-theme`,
+`/api/theme`, `/api/reset-theme`, and a `palette.py` module) was built but never wired to any
+template markup, and has since been **removed entirely** — do not reintroduce it unless
+explicitly requested again.
 
 ---
 
@@ -116,6 +125,9 @@ pytest -s
 - **Never put DB logic in route functions** — it belongs in `database/db.py`
 - **Never install new packages** mid-feature without flagging it — keep `requirements.txt` in sync
 - **Never use JS frameworks** — the frontend is intentionally vanilla
-- **`database/db.py` is currently empty** — do not assume helpers exist until the step that implements them
-- **FK enforcement is manual** — SQLite foreign keys are off by default; `get_db()` must run `PRAGMA foreign_keys = ON` on every connection
+- **`database/db.py` is fully implemented** — `get_db()`, `init_db()`, `seed_db()`, plus user/expense query helpers already exist; check it before adding a new helper so you don't duplicate one
+- **FK enforcement is manual** — SQLite foreign keys are off by default; `get_db()` must run `PRAGMA foreign_keys = ON` on every connection (already done)
 - The app runs on **port 5001**, not the Flask default 5000 — don't change this
+- **No tests exist yet** — `pytest`/`pytest-flask` are declared in `requirements.txt` and documented under Commands, but there is no `tests/` directory yet
+- `base.html`'s footer currently hardcodes `/terms` and `/privacy` instead of using `url_for()` — a known violation of the URL rule above, left as-is until addressed
+- The theme-picker feature (see note under "Implemented vs stub routes") was removed — don't re-add a `theme` table, `palette.py`, or `/api/theme*` routes unless explicitly asked
