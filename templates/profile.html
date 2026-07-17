@@ -26,6 +26,30 @@ _('Transport'), _('Bills'), _('Health'), _('Entertainment'), _('Other')] %}
       </div>
     </div>
 
+    <!-- Date range filter -->
+    <div class="profile-card profile-filter-card">
+      <form class="profile-filter-form" method="GET" action="{{ url_for('profile') }}">
+        <div class="profile-filter-field">
+          <label for="filter-start">{{ _('From') }}</label>
+          <input type="date" id="filter-start" name="start" class="form-input"
+                 value="{{ request.args.get('start', '') }}" />
+        </div>
+        <div class="profile-filter-field">
+          <label for="filter-end">{{ _('To') }}</label>
+          <input type="date" id="filter-end" name="end" class="form-input"
+                 value="{{ request.args.get('end', '') }}" />
+        </div>
+        <button type="submit" class="profile-filter-apply">{{ _('Apply') }}</button>
+      </form>
+      <div class="profile-filter-presets">
+        <a class="profile-preset-link"
+           href="{{ url_for('profile', start=this_month_start, end=this_month_end) }}">{{ _('This month') }}</a>
+        <a class="profile-preset-link"
+           href="{{ url_for('profile', start=last_month_start, end=last_month_end) }}">{{ _('Last month') }}</a>
+        <a class="profile-preset-link" href="{{ url_for('profile') }}">{{ _('All time') }}</a>
+      </div>
+    </div>
+
     <!-- Stat tiles -->
     <div class="profile-stat-grid">
       <div class="profile-stat-tile">

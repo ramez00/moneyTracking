@@ -2,7 +2,7 @@ from flask import (Flask, render_template, request, session, g, redirect,
                    url_for, flash)
 from flask_babel import Babel, gettext
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
+from datetime import datetime, date, timedelta
 import os
 
 from database.db import (get_db, init_db, seed_db, get_user_by_email,
@@ -137,6 +137,24 @@ def logout():
     return redirect(url_for("landing"))
 
 
+def _parse_date_range(start_raw, end_raw):
+    if not start_raw or not end_raw:
+        return None, None
+
+    try:
+        start_dt = datetime.strptime(start_raw, "%Y-%m-%d").date()
+        end_dt = datetime.strptime(end_raw, "%Y-%m-%d").date()
+    except ValueError:
+        flash(gettext("Invalid date range — showing all expenses."), "error")
+        return None, None
+
+    if start_dt > end_dt:
+        flash(gettext("Invalid date range — showing all expenses."), "error")
+        return None, None
+
+    return start_dt.isoformat(), end_dt.isoformat()
+
+
 @app.route("/profile")
 def profile():
     user_id = session.get("user_id")
@@ -150,10 +168,24 @@ def profile():
         flash(gettext("Please sign in to view your profile."), "error")
         return redirect(url_for("login"))
 
-    summary = get_expense_summary(user_id)
-    expenses = get_expenses_by_user(user_id)
-    return render_template("profile.html", user=user, summary=summary,
-                          expenses=expenses)
+    start_date, end_date = _parse_date_range(request.args.get("start"),
+                                              request.args.get("end"))
+
+    summary = get_expense_summary(user_id, start_date, end_date)
+    expenses = get_expenses_by_user(user_id, start_date, end_date)
+
+    today = date.today()
+    this_month_start = today.replace(day=1)
+    last_month_end = this_month_start - timedelta(days=1)
+    last_month_start = last_month_end.replace(day=1)
+
+    return render_template(
+        "profile.html", user=user, summary=summary, expenses=expenses,
+        this_month_start=this_month_start.isoformat(),
+        this_month_end=today.isoformat(),
+        last_month_start=last_month_start.isoformat(),
+        last_month_end=last_month_end.isoformat(),
+    )
 
 
 # ------------------------------------------------------------------ #

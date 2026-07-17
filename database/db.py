@@ -110,28 +110,33 @@ def get_user_by_id(user_id):
     return user
 
 
-def get_expenses_by_user(user_id):
+def get_expenses_by_user(user_id, start_date=None, end_date=None):
     conn = get_db()
-    expenses = conn.execute(
-        "SELECT id, amount, category, date, description FROM expenses "
-        "WHERE user_id = ? ORDER BY date DESC, id DESC",
-        (user_id,),
-    ).fetchall()
+    query = "SELECT id, amount, category, date, description FROM expenses WHERE user_id = ?"
+    params = [user_id]
+    if start_date and end_date:
+        query += " AND date BETWEEN ? AND ?"
+        params += [start_date, end_date]
+    query += " ORDER BY date DESC, id DESC"
+    expenses = conn.execute(query, params).fetchall()
     conn.close()
     return expenses
 
 
-def get_expense_summary(user_id):
+def get_expense_summary(user_id, start_date=None, end_date=None):
     conn = get_db()
+    range_clause = " AND date BETWEEN ? AND ?" if start_date and end_date else ""
+    range_params = [start_date, end_date] if start_date and end_date else []
+
     totals = conn.execute(
         "SELECT COALESCE(SUM(amount), 0) AS total, COUNT(*) AS count "
-        "FROM expenses WHERE user_id = ?",
-        (user_id,),
+        "FROM expenses WHERE user_id = ?" + range_clause,
+        [user_id] + range_params,
     ).fetchone()
     by_category = conn.execute(
-        "SELECT category, SUM(amount) AS total FROM expenses "
-        "WHERE user_id = ? GROUP BY category ORDER BY total DESC",
-        (user_id,),
+        "SELECT category, SUM(amount) AS total FROM expenses WHERE user_id = ?"
+        + range_clause + " GROUP BY category ORDER BY total DESC",
+        [user_id] + range_params,
     ).fetchall()
     conn.close()
     return {
