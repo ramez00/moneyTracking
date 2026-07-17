@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-14 09:19+0300\n"
+"POT-Creation-Date: 2026-07-17 11:46+0300\n"
 "PO-Revision-Date: 2026-05-31 17:26+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,35 +18,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: app.py:84
+#: app.py:82
 msgid "All fields are required."
 msgstr ""
 
-#: app.py:88
+#: app.py:86
 msgid "Password must be at least 8 characters."
 msgstr ""
 
-#: app.py:92
+#: app.py:90
 msgid "An account with that email already exists."
 msgstr ""
 
-#: app.py:96
+#: app.py:94
 msgid "Account created — please sign in."
 msgstr ""
 
-#: app.py:119
+#: app.py:117
 msgid "Please enter your email and password."
 msgstr ""
 
-#: app.py:124
+#: app.py:122
 msgid "Invalid email or password."
 msgstr ""
 
-#: app.py:138
+#: app.py:136
 msgid "You've been signed out."
 msgstr ""
 
-#: app.py:146 app.py:152
+#: app.py:148 app.py:152
+msgid "Invalid date range — showing all expenses."
+msgstr ""
+
+#: app.py:162 app.py:168
 msgid "Please sign in to view your profile."
 msgstr ""
 
@@ -319,43 +323,67 @@ msgstr ""
 msgid "Member since"
 msgstr ""
 
-#: templates/profile.html:32
-msgid "Total spent"
+#: templates/profile.html:33
+msgid "From"
 msgstr ""
 
 #: templates/profile.html:38
-msgid "Transactions"
+msgid "To"
 msgstr ""
 
 #: templates/profile.html:42
-msgid "Top category"
+msgid "Apply"
 msgstr ""
 
-#: templates/profile.html:53
-msgid "Recent transactions"
+#: templates/profile.html:46
+msgid "This month"
 msgstr ""
 
-#: templates/profile.html:55 templates/profile.html:84
-msgid "No expenses yet."
+#: templates/profile.html:48
+msgid "Last month"
 msgstr ""
 
-#: templates/profile.html:59
-msgid "Date"
+#: templates/profile.html:49
+msgid "All time"
 msgstr ""
 
-#: templates/profile.html:60
-msgid "Description"
-msgstr ""
-
-#: templates/profile.html:61
-msgid "Category"
+#: templates/profile.html:56
+msgid "Total spent"
 msgstr ""
 
 #: templates/profile.html:62
+msgid "Transactions"
+msgstr ""
+
+#: templates/profile.html:66
+msgid "Top category"
+msgstr ""
+
+#: templates/profile.html:77
+msgid "Recent transactions"
+msgstr ""
+
+#: templates/profile.html:79 templates/profile.html:108
+msgid "No expenses yet."
+msgstr ""
+
+#: templates/profile.html:83
+msgid "Date"
+msgstr ""
+
+#: templates/profile.html:84
+msgid "Description"
+msgstr ""
+
+#: templates/profile.html:85
+msgid "Category"
+msgstr ""
+
+#: templates/profile.html:86
 msgid "Amount"
 msgstr ""
 
-#: templates/profile.html:82
+#: templates/profile.html:106
 msgid "By category"
 msgstr ""
 
