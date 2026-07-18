@@ -1,0 +1,94 @@
+{% extends "base.html" %} {% block title %}{{ _('Add expense') }} — Spendly{%
+endblock %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/add_expense.css') }}"
+/>
+{% endblock %} {% block content %}
+
+<section class="auth-section">
+  <div class="auth-container">
+    <div class="auth-header">
+      <h1 class="auth-title">{{ _('Add an expense') }}</h1>
+      <p class="auth-subtitle">{{ _('Record what you spent and where') }}</p>
+    </div>
+
+    <div class="auth-card">
+      {% if error %}
+      <div class="auth-error">{{ error }}</div>
+      {% endif %}
+
+      <form method="POST" action="{{ url_for('add_expense') }}">
+        <div class="form-group">
+          <label for="amount">{{ _('Amount') }}</label>
+          <input
+            type="number"
+            id="amount"
+            name="amount"
+            class="form-input"
+            step="0.01"
+            min="0.01"
+            max="1000000"
+            placeholder="0.00"
+            value="{{ form.get('amount', '') }}"
+            required
+            autofocus
+          />
+        </div>
+        <div class="form-group">
+          <label for="category">{{ _('Category') }}</label>
+          {# {{ _(cat) }} below is a dynamic gettext call pybabel can't
+             extract; the Food/Transport/... msgids are extracted via the
+             _category_translation_hints list in profile.html #}
+          <select
+            id="category"
+            name="category"
+            class="form-input form-select"
+            required
+          >
+            <option value="" disabled {% if not form.get('category') %}selected{% endif %}>
+              {{ _('Choose a category') }}
+            </option>
+            {% for cat in categories %}
+            <option value="{{ cat }}" {% if form.get('category') == cat %}selected{% endif %}>
+              {{ _(cat) }}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">{{ _('Date') }}</label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            class="form-input"
+            max="{{ today }}"
+            value="{{ form.get('date', today) }}"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">{{ _('Description (optional)') }}</label>
+          <textarea
+            id="description"
+            name="description"
+            class="form-input form-textarea"
+            rows="3"
+            maxlength="500"
+            placeholder="{{ _('What was this for?') }}"
+          >{{ form.get('description', '') }}</textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+          {{ _('Add expense') }}
+        </button>
+      </form>
+    </div>
+
+    <p class="auth-switch">
+      <a href="{{ url_for('profile') }}">{{ _('Back to profile') }}</a>
+    </p>
+  </div>
+</section>
+
+{% endblock %}

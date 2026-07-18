@@ -47,6 +47,29 @@
   border-bottom: 1px solid var(--border-soft);
 }
 
+.profile-card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.profile-card-header .profile-card-title {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* size-only override of .btn-ghost (style.css) */
+.profile-add-btn {
+  flex-shrink: 0;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+}
+
 /* Account: avatar card */
 .profile-user-card {
   display: flex;

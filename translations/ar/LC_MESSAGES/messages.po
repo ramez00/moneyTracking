@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-17 11:46+0300\n"
+"POT-Creation-Date: 2026-07-18 22:46+0300\n"
 "PO-Revision-Date: 2026-05-31 17:26+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ar\n"
@@ -19,41 +19,113 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: app.py:82
+#: app.py:88
 msgid "All fields are required."
 msgstr "جميع الحقول مطلوبة."
 
-#: app.py:86
+#: app.py:92
 msgid "Password must be at least 8 characters."
 msgstr "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل."
 
-#: app.py:90
+#: app.py:96
 msgid "An account with that email already exists."
 msgstr "يوجد حساب مسجل بهذا البريد الإلكتروني بالفعل."
 
-#: app.py:94
+#: app.py:100
 msgid "Account created — please sign in."
 msgstr "تم إنشاء الحساب بنجاح — يرجى تسجيل الدخول."
 
-#: app.py:117
+#: app.py:123
 msgid "Please enter your email and password."
 msgstr "يرجى إدخال بريدك الإلكتروني وكلمة المرور."
 
-#: app.py:122
+#: app.py:128
 msgid "Invalid email or password."
 msgstr "البريد الإلكتروني أو كلمة المرور غير صحيحة."
 
-#: app.py:136
+#: app.py:142
 msgid "You've been signed out."
 msgstr "تم تسجيل خروجك."
 
-#: app.py:148 app.py:152
+#: app.py:154 app.py:158
 msgid "Invalid date range — showing all expenses."
 msgstr "نطاق تاريخ غير صالح — يتم عرض كل المصروفات."
 
-#: app.py:162 app.py:168
+#: app.py:168 app.py:174
 msgid "Please sign in to view your profile."
 msgstr "يرجى تسجيل الدخول لعرض ملفك الشخصي."
+
+#: app.py:201 app.py:206
+msgid "Please sign in to add an expense."
+msgstr "يرجى تسجيل الدخول لإضافة نفقة."
+
+#: app.py:223
+msgid "Amount must be a positive number."
+msgstr "يجب أن يكون المبلغ رقماً موجباً."
+
+#: app.py:225
+msgid "Amount is too large."
+msgstr "المبلغ كبير جداً."
+
+#: app.py:227
+msgid "Description is too long."
+msgstr "الوصف طويل جداً."
+
+#: app.py:229
+msgid "Please choose a valid category."
+msgstr "يرجى اختيار فئة صحيحة."
+
+#: app.py:234
+msgid "Date cannot be in the future."
+msgstr "لا يمكن أن يكون التاريخ في المستقبل."
+
+#: app.py:236
+msgid "Please enter a valid date."
+msgstr "يرجى إدخال تاريخ صحيح."
+
+#: app.py:245
+msgid "Expense added."
+msgstr "تمت إضافة النفقة."
+
+#: templates/add_expense.html:1 templates/add_expense.html:83
+msgid "Add expense"
+msgstr "إضافة نفقة"
+
+#: templates/add_expense.html:12
+msgid "Add an expense"
+msgstr "إضافة نفقة"
+
+#: templates/add_expense.html:13
+msgid "Record what you spent and where"
+msgstr "سجّل ما أنفقته وأين"
+
+#: templates/add_expense.html:23 templates/profile.html:91
+msgid "Amount"
+msgstr "المبلغ"
+
+#: templates/add_expense.html:39 templates/profile.html:90
+msgid "Category"
+msgstr "الفئة"
+
+#: templates/add_expense.html:50
+msgid "Choose a category"
+msgstr "اختر فئة"
+
+#: templates/add_expense.html:60 templates/profile.html:88
+msgid "Date"
+msgstr "التاريخ"
+
+#: templates/add_expense.html:72
+msgid "Description (optional)"
+msgstr "الوصف (اختياري)"
+
+#: templates/add_expense.html:79
+msgid "What was this for?"
+msgstr "ما الغرض من هذا الإنفاق؟"
+
+#: templates/add_expense.html:89
+msgid "Back to profile"
+msgstr "العودة إلى الملف الشخصي"
 
 #: templates/base.html:41
 msgid "Logout"
@@ -382,31 +454,23 @@ msgstr "المعاملات"
 msgid "Top category"
 msgstr "الفئة الأكثر إنفاقاً"
 
-#: templates/profile.html:77
+#: templates/profile.html:78
 msgid "Recent transactions"
 msgstr "أحدث المعاملات"
 
-#: templates/profile.html:79 templates/profile.html:108
+#: templates/profile.html:80
+msgid "+ Add expense"
+msgstr "+ إضافة نفقة"
+
+#: templates/profile.html:84 templates/profile.html:113
 msgid "No expenses yet."
 msgstr "لا توجد نفقات بعد."
 
-#: templates/profile.html:83
-msgid "Date"
-msgstr "التاريخ"
-
-#: templates/profile.html:84
+#: templates/profile.html:89
 msgid "Description"
 msgstr "الوصف"
 
-#: templates/profile.html:85
-msgid "Category"
-msgstr "الفئة"
-
-#: templates/profile.html:86
-msgid "Amount"
-msgstr "المبلغ"
-
-#: templates/profile.html:106
+#: templates/profile.html:111
 msgid "By category"
 msgstr "حسب الفئة"
 
