@@ -1,0 +1,28 @@
+/* ------------------------------------------------------------------ */
+/* Add-expense page — select and textarea styling                      */
+/* ------------------------------------------------------------------ */
+
+.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.25rem;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-muted) 50%),
+    linear-gradient(135deg, var(--ink-muted) 50%, transparent 50%);
+  background-position: calc(100% - 1.15rem) 50%, calc(100% - 0.85rem) 50%;
+  background-size: 0.3rem 0.3rem, 0.3rem 0.3rem;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+[dir="rtl"] .form-select {
+  padding-right: 0.875rem;
+  padding-left: 2.25rem;
+  background-position: 0.85rem 50%, 1.15rem 50%;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 4.5rem;
+  font-family: inherit;
+  line-height: 1.5;
+}

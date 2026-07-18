@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-17 11:46+0300\n"
+"POT-Creation-Date: 2026-07-18 22:46+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,40 +17,112 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: app.py:82
+#: app.py:88
 msgid "All fields are required."
 msgstr ""
 
-#: app.py:86
+#: app.py:92
 msgid "Password must be at least 8 characters."
 msgstr ""
 
-#: app.py:90
+#: app.py:96
 msgid "An account with that email already exists."
 msgstr ""
 
-#: app.py:94
+#: app.py:100
 msgid "Account created — please sign in."
 msgstr ""
 
-#: app.py:117
+#: app.py:123
 msgid "Please enter your email and password."
 msgstr ""
 
-#: app.py:122
+#: app.py:128
 msgid "Invalid email or password."
 msgstr ""
 
-#: app.py:136
+#: app.py:142
 msgid "You've been signed out."
 msgstr ""
 
-#: app.py:148 app.py:152
+#: app.py:154 app.py:158
 msgid "Invalid date range — showing all expenses."
 msgstr ""
 
-#: app.py:162 app.py:168
+#: app.py:168 app.py:174
 msgid "Please sign in to view your profile."
+msgstr ""
+
+#: app.py:201 app.py:206
+msgid "Please sign in to add an expense."
+msgstr ""
+
+#: app.py:223
+msgid "Amount must be a positive number."
+msgstr ""
+
+#: app.py:225
+msgid "Amount is too large."
+msgstr ""
+
+#: app.py:227
+msgid "Description is too long."
+msgstr ""
+
+#: app.py:229
+msgid "Please choose a valid category."
+msgstr ""
+
+#: app.py:234
+msgid "Date cannot be in the future."
+msgstr ""
+
+#: app.py:236
+msgid "Please enter a valid date."
+msgstr ""
+
+#: app.py:245
+msgid "Expense added."
+msgstr ""
+
+#: templates/add_expense.html:1 templates/add_expense.html:83
+msgid "Add expense"
+msgstr ""
+
+#: templates/add_expense.html:12
+msgid "Add an expense"
+msgstr ""
+
+#: templates/add_expense.html:13
+msgid "Record what you spent and where"
+msgstr ""
+
+#: templates/add_expense.html:23 templates/profile.html:91
+msgid "Amount"
+msgstr ""
+
+#: templates/add_expense.html:39 templates/profile.html:90
+msgid "Category"
+msgstr ""
+
+#: templates/add_expense.html:50
+msgid "Choose a category"
+msgstr ""
+
+#: templates/add_expense.html:60 templates/profile.html:88
+msgid "Date"
+msgstr ""
+
+#: templates/add_expense.html:72
+msgid "Description (optional)"
+msgstr ""
+
+#: templates/add_expense.html:79
+msgid "What was this for?"
+msgstr ""
+
+#: templates/add_expense.html:89
+msgid "Back to profile"
 msgstr ""
 
 #: templates/base.html:41
@@ -358,31 +430,23 @@ msgstr ""
 msgid "Top category"
 msgstr ""
 
-#: templates/profile.html:77
+#: templates/profile.html:78
 msgid "Recent transactions"
 msgstr ""
 
-#: templates/profile.html:79 templates/profile.html:108
+#: templates/profile.html:80
+msgid "+ Add expense"
+msgstr ""
+
+#: templates/profile.html:84 templates/profile.html:113
 msgid "No expenses yet."
 msgstr ""
 
-#: templates/profile.html:83
-msgid "Date"
-msgstr ""
-
-#: templates/profile.html:84
+#: templates/profile.html:89
 msgid "Description"
 msgstr ""
 
-#: templates/profile.html:85
-msgid "Category"
-msgstr ""
-
-#: templates/profile.html:86
-msgid "Amount"
-msgstr ""
-
-#: templates/profile.html:106
+#: templates/profile.html:111
 msgid "By category"
 msgstr ""
 

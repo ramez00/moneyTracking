@@ -74,7 +74,12 @@ _('Transport'), _('Bills'), _('Health'), _('Entertainment'), _('Other')] %}
     <!-- Transactions + category breakdown -->
     <div class="profile-columns">
       <div class="profile-card">
-        <h2 class="profile-card-title">{{ _('Recent transactions') }}</h2>
+        <div class="profile-card-header">
+          <h2 class="profile-card-title">{{ _('Recent transactions') }}</h2>
+          <a href="{{ url_for('add_expense') }}" class="btn-ghost profile-add-btn"
+            >{{ _('+ Add expense') }}</a
+          >
+        </div>
         {% if expenses|length == 0 %}
         <p class="profile-empty">{{ _('No expenses yet.') }}</p>
         {% else %}

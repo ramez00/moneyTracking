@@ -3,11 +3,12 @@ from flask import (Flask, render_template, request, session, g, redirect,
 from flask_babel import Babel, gettext
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, date, timedelta
+import math
 import os
 
 from database.db import (get_db, init_db, seed_db, get_user_by_email,
                          create_user, get_user_by_id, get_expense_summary,
-                         get_expenses_by_user)
+                         get_expenses_by_user, create_expense)
 from alerts import send_visit_alert
 
 app = Flask(__name__)
@@ -18,6 +19,11 @@ LANGUAGES = {
     'en': 'English',
     'ar': 'العربية'
 }
+
+EXPENSE_CATEGORIES = ("Food", "Transport", "Bills", "Health",
+                      "Entertainment", "Shopping", "Other")
+MAX_EXPENSE_AMOUNT = 1_000_000
+MAX_DESCRIPTION_LENGTH = 500
 
 # Babel configuration
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
@@ -188,14 +194,64 @@ def profile():
     )
 
 
+@app.route("/expenses/add", methods=["GET", "POST"])
+def add_expense():
+    user_id = session.get("user_id")
+    if not user_id:
+        flash(gettext("Please sign in to add an expense."), "error")
+        return redirect(url_for("login"))
+
+    if get_user_by_id(user_id) is None:
+        session.clear()
+        flash(gettext("Please sign in to add an expense."), "error")
+        return redirect(url_for("login"))
+
+    today = date.today().isoformat()
+
+    if request.method == "POST":
+        amount_raw = request.form.get("amount", "").strip()
+        category = request.form.get("category", "").strip()
+        date_raw = request.form.get("date", "").strip()
+        description = request.form.get("description", "").strip()
+
+        error = None
+        try:
+            amount = float(amount_raw)
+        except ValueError:
+            amount = None
+        if amount is None or not math.isfinite(amount) or amount <= 0:
+            error = gettext("Amount must be a positive number.")
+        elif amount > MAX_EXPENSE_AMOUNT:
+            error = gettext("Amount is too large.")
+        elif len(description) > MAX_DESCRIPTION_LENGTH:
+            error = gettext("Description is too long.")
+        elif category not in EXPENSE_CATEGORIES:
+            error = gettext("Please choose a valid category.")
+        else:
+            try:
+                expense_date = datetime.strptime(date_raw, "%Y-%m-%d").date()
+                if expense_date > date.today():
+                    error = gettext("Date cannot be in the future.")
+            except ValueError:
+                error = gettext("Please enter a valid date.")
+
+        if error:
+            return render_template("add_expense.html", error=error,
+                                   categories=EXPENSE_CATEGORIES,
+                                   today=today, form=request.form)
+
+        create_expense(user_id, amount, category, expense_date.isoformat(),
+                       description or None)
+        flash(gettext("Expense added."), "success")
+        return redirect(url_for("profile"))
+
+    return render_template("add_expense.html",
+                           categories=EXPENSE_CATEGORIES, today=today, form={})
+
+
 # ------------------------------------------------------------------ #
 # Placeholder routes — students will implement these                  #
 # ------------------------------------------------------------------ #
-
-
-@app.route("/expenses/add")
-def add_expense():
-    return "Add expense — coming in Step 7"
 
 
 @app.route("/expenses/<int:id>/edit")

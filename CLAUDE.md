@@ -105,7 +105,7 @@ pytest -s
 | `GET, POST /login`          | Implemented — Step 3                                              |
 | `GET /logout`               | Implemented — Step 3                                              |
 | `GET /profile`              | Implemented — Step 4, spending summary dashboard                  |
-| `GET /expenses/add`         | Stub — Step 7                                                     |
+| `GET, POST /expenses/add`   | Implemented — Step 6, add-expense form                            |
 | `GET /expenses/<id>/edit`   | Stub — Step 8                                                     |
 | `GET /expenses/<id>/delete` | Stub — Step 9                                                     |
 
