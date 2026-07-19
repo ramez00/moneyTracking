@@ -6,47 +6,82 @@
 {% endblock %} {% block content %} {% set category_classes = { 'Food':
 'cat-food', 'Shopping': 'cat-shopping', 'Transport': 'cat-transport', 'Bills':
 'cat-bills', 'Health': 'cat-health', 'Entertainment': 'cat-entertainment',
-'Other': 'cat-other', } %}
-{# category names come from the DB at runtime, so babel can't extract them
-   from the _(expense['category']) calls below — list them literally here
-   so `pybabel extract` picks them up for translation #}
-{% set _category_translation_hints = [_('Food'), _('Shopping'),
-_('Transport'), _('Bills'), _('Health'), _('Entertainment'), _('Other')] %}
+'Other': 'cat-other', } %} {# category names come from the DB at runtime, so
+babel can't extract them from the _(expense['category']) calls below — list them
+literally here so `pybabel extract` picks them up for translation #} {% set
+_category_translation_hints = [_('Food'), _('Shopping'), _('Transport'),
+_('Bills'), _('Health'), _('Entertainment'), _('Other')] %}
 <section class="profile-section">
   <div class="profile-container">
     <!-- Account -->
-    {% set name_parts = user['name'].split() %}
-    {% set initials = (name_parts[0][0] ~ (name_parts[1][0] if name_parts|length > 1 else '')) | upper %}
+    {% set name_parts = user['name'].split() %} {% set initials =
+    (name_parts[0][0] ~ (name_parts[1][0] if name_parts|length > 1 else '')) |
+    upper %}
     <div class="profile-card profile-user-card">
       <div class="profile-avatar">{{ initials }}</div>
       <div class="profile-user-info">
         <span class="profile-user-name">{{ user['name'] }}</span>
         <span class="profile-user-email">{{ user['email'] }}</span>
-        <span class="profile-user-since">{{ _('Member since') }} {{ user['created_at']|friendly_date }}</span>
+        <span class="profile-user-since"
+          >{{ _('Member since') }} {{ user['created_at']|friendly_date }}</span
+        >
       </div>
+      <a
+        href="{{ url_for('add_expense') }}"
+        class="btn-primary profile-add-btn profile-user-add-btn"
+        >{{ _('+ Add expense') }}</a
+      >
     </div>
 
     <!-- Date range filter -->
     <div class="profile-card profile-filter-card">
-      <form class="profile-filter-form" method="GET" action="{{ url_for('profile') }}">
+      <form
+        class="profile-filter-form"
+        method="GET"
+        action="{{ url_for('profile') }}"
+      >
         <div class="profile-filter-field">
           <label for="filter-start">{{ _('From') }}</label>
-          <input type="date" id="filter-start" name="start" class="form-input"
-                 value="{{ request.args.get('start', '') }}" />
+          <input
+            type="date"
+            id="filter-start"
+            name="start"
+            class="form-input"
+            value="{{ request.args.get('start', '') }}"
+          />
         </div>
         <div class="profile-filter-field">
           <label for="filter-end">{{ _('To') }}</label>
-          <input type="date" id="filter-end" name="end" class="form-input"
-                 value="{{ request.args.get('end', '') }}" />
+          <input
+            type="date"
+            id="filter-end"
+            name="end"
+            class="form-input"
+            value="{{ request.args.get('end', '') }}"
+          />
         </div>
-        <button type="submit" class="profile-filter-apply">{{ _('Apply') }}</button>
+        <button type="submit" class="btn-primary profile-filter-apply">
+          {{ _('Apply') }}
+        </button>
       </form>
+      {% set cur_start = request.args.get('start', '') %}
+      {% set cur_end = request.args.get('end', '') %}
       <div class="profile-filter-presets">
-        <a class="profile-preset-link"
-           href="{{ url_for('profile', start=this_month_start, end=this_month_end) }}">{{ _('This month') }}</a>
-        <a class="profile-preset-link"
-           href="{{ url_for('profile', start=last_month_start, end=last_month_end) }}">{{ _('Last month') }}</a>
-        <a class="profile-preset-link" href="{{ url_for('profile') }}">{{ _('All time') }}</a>
+        <a
+          class="btn-ghost profile-preset-link{% if cur_start == this_month_start and cur_end == this_month_end %} active{% endif %}"
+          href="{{ url_for('profile', start=this_month_start, end=this_month_end) }}"
+          >{{ _('This month') }}</a
+        >
+        <a
+          class="btn-ghost profile-preset-link{% if cur_start == last_month_start and cur_end == last_month_end %} active{% endif %}"
+          href="{{ url_for('profile', start=last_month_start, end=last_month_end) }}"
+          >{{ _('Last month') }}</a
+        >
+        <a
+          class="btn-ghost profile-preset-link{% if not cur_start and not cur_end %} active{% endif %}"
+          href="{{ url_for('profile') }}"
+          >{{ _('All time') }}</a
+        >
       </div>
     </div>
 
@@ -76,9 +111,6 @@ _('Transport'), _('Bills'), _('Health'), _('Entertainment'), _('Other')] %}
       <div class="profile-card">
         <div class="profile-card-header">
           <h2 class="profile-card-title">{{ _('Recent transactions') }}</h2>
-          <a href="{{ url_for('add_expense') }}" class="btn-ghost profile-add-btn"
-            >{{ _('+ Add expense') }}</a
-          >
         </div>
         {% if expenses|length == 0 %}
         <p class="profile-empty">{{ _('No expenses yet.') }}</p>

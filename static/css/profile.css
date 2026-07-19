@@ -63,10 +63,10 @@
   border-bottom: none;
 }
 
-/* size-only override of .btn-ghost (style.css) */
+/* size-only override of .btn-primary (style.css) */
 .profile-add-btn {
   flex-shrink: 0;
-  padding: 0.35rem 0.9rem;
+  padding: 0.55rem 1.1rem;
   font-size: 0.85rem;
 }
 
@@ -75,6 +75,10 @@
   display: flex;
   align-items: center;
   gap: 1.25rem;
+}
+
+.profile-user-add-btn {
+  margin-inline-start: auto;
 }
 
 .profile-avatar {
@@ -149,20 +153,15 @@
   padding: 0.5rem 0.75rem;
 }
 
+/* pill-shaped accent variant of .btn-primary (style.css) */
 .profile-filter-apply {
   padding: 0.55rem 1.25rem;
-  background: var(--ink);
-  color: var(--paper-card);
-  border: none;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background 0.15s ease;
+  border-radius: 999px;
+  background: var(--accent);
 }
 
 .profile-filter-apply:hover {
-  background: var(--accent);
+  background: var(--ink);
 }
 
 .profile-filter-presets {
@@ -171,20 +170,18 @@
   gap: 0.5rem;
 }
 
+/* pill-shaped variant of .btn-ghost (style.css) */
 .profile-preset-link {
   padding: 0.45rem 0.9rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
   font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--ink-soft);
-  text-decoration: none;
-  transition: border-color 0.15s ease, color 0.15s ease;
+  border-radius: 999px;
 }
 
-.profile-preset-link:hover {
+.profile-preset-link.active,
+.profile-preset-link.active:hover {
+  background: var(--accent);
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--paper-card);
 }
 
 /* Stat tiles */
@@ -432,6 +429,10 @@ html[dir="rtl"] .profile-filter-field label {
 }
 
 @media (max-width: 560px) {
+  .profile-user-card {
+    flex-wrap: wrap;
+  }
+
   .profile-table-head {
     display: none;
   }
