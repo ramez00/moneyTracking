@@ -96,18 +96,18 @@ pytest -s
 
 ## Implemented vs stub routes
 
-| Route                       | Status                                                            |
-| --------------------------- | ----------------------------------------------------------------- |
-| `GET /`                     | Implemented — renders `landing.html`, fires a visitor alert email |
-| `GET, POST /register`       | Implemented — Step 2                                              |
-| `GET /terms`                | Implemented — renders `terms.html`                                |
-| `GET /privacy`              | Implemented — renders `privacy.html`                              |
-| `GET, POST /login`          | Implemented — Step 3                                              |
-| `GET /logout`               | Implemented — Step 3                                              |
-| `GET /profile`              | Implemented — Step 4, spending summary dashboard                  |
-| `GET, POST /expenses/add`   | Implemented — Step 6, add-expense form                            |
-| `GET /expenses/<id>/edit`   | Stub — Step 8                                                     |
-| `GET /expenses/<id>/delete` | Stub — Step 9                                                     |
+| Route                           | Status                                                            |
+| ------------------------------- | ----------------------------------------------------------------- |
+| `GET /`                         | Implemented — renders `landing.html`, fires a visitor alert email |
+| `GET, POST /register`           | Implemented — Step 2                                              |
+| `GET /terms`                    | Implemented — renders `terms.html`                                |
+| `GET /privacy`                  | Implemented — renders `privacy.html`                              |
+| `GET, POST /login`              | Implemented — Step 3                                              |
+| `GET /logout`                   | Implemented — Step 3                                              |
+| `GET /profile`                  | Implemented — Step 4, spending summary dashboard                  |
+| `GET, POST /expenses/add`       | Implemented — Step 6, add-expense form                            |
+| `GET, POST /expenses/<id>/edit` | Implemented — Step 7, edit-expense form                           |
+| `GET /expenses/<id>/delete`     | Stub — Step 9                                                     |
 
 **Do not implement a stub route unless the active task explicitly targets that step.**
 

@@ -136,6 +136,29 @@ def get_expenses_by_user(user_id, start_date=None, end_date=None):
     return expenses
 
 
+def get_expense_by_id(expense_id, user_id):
+    conn = get_db()
+    expense = conn.execute(
+        "SELECT id, amount, category, date, description FROM expenses "
+        "WHERE id = ? AND user_id = ?",
+        (expense_id, user_id),
+    ).fetchone()
+    conn.close()
+    return expense
+
+
+def update_expense(expense_id, user_id, amount, category, expense_date,
+                    description):
+    conn = get_db()
+    conn.execute(
+        "UPDATE expenses SET amount = ?, category = ?, date = ?, description = ? "
+        "WHERE id = ? AND user_id = ?",
+        (amount, category, expense_date, description, expense_id, user_id),
+    )
+    conn.commit()
+    conn.close()
+
+
 def get_expense_summary(user_id, start_date=None, end_date=None):
     conn = get_db()
     range_clause = " AND date BETWEEN ? AND ?" if start_date and end_date else ""

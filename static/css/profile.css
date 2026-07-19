@@ -267,7 +267,7 @@
 
 .profile-table-head {
   display: grid;
-  grid-template-columns: 90px 1fr 110px 100px;
+  grid-template-columns: 90px 1fr 110px 100px 48px;
   gap: 0.75rem;
   padding-bottom: 0.6rem;
   border-bottom: 1px solid var(--border-soft);
@@ -280,7 +280,7 @@
 
 .profile-expense-row {
   display: grid;
-  grid-template-columns: 90px 1fr 110px 100px;
+  grid-template-columns: 90px 1fr 110px 100px 48px;
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 0;
@@ -307,6 +307,18 @@
   font-weight: 600;
   padding: 0.25rem 0.7rem;
   border-radius: 999px;
+}
+
+.profile-exp-edit {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  justify-self: end;
+}
+
+.profile-exp-edit:hover {
+  text-decoration: underline;
 }
 
 /* Category color mapping, shared by bars and badges */
@@ -442,8 +454,12 @@ html[dir="rtl"] .profile-filter-field label {
     grid-template-areas:
       "date amt"
       "desc desc"
-      "cat cat";
+      "cat edit";
     row-gap: 0.35rem;
+  }
+
+  .profile-exp-edit {
+    grid-area: edit;
   }
 
   .profile-exp-date {
