@@ -121,6 +121,7 @@ _('Bills'), _('Health'), _('Entertainment'), _('Other')] %}
             <span>{{ _('Description') }}</span>
             <span>{{ _('Category') }}</span>
             <span>{{ _('Amount') }}</span>
+            <span></span>
           </div>
           {% for expense in expenses %}
           <div class="profile-expense-row">
@@ -132,6 +133,11 @@ _('Bills'), _('Health'), _('Entertainment'), _('Other')] %}
             >
             <span class="profile-amt"
               >EGP {{ '{:,.2f}'.format(expense['amount']) }}</span
+            >
+            <a
+              class="profile-exp-edit"
+              href="{{ url_for('edit_expense', id=expense['id']) }}"
+              >{{ _('Edit') }}</a
             >
           </div>
           {% endfor %}

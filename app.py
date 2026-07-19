@@ -1,5 +1,5 @@
 from flask import (Flask, render_template, request, session, g, redirect,
-                   url_for, flash)
+                   url_for, flash, abort)
 from flask_babel import Babel, gettext
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, date, timedelta
@@ -8,7 +8,8 @@ import os
 
 from database.db import (get_db, init_db, seed_db, get_user_by_email,
                          create_user, get_user_by_id, get_expense_summary,
-                         get_expenses_by_user, create_expense)
+                         get_expenses_by_user, create_expense,
+                         get_expense_by_id, update_expense)
 from alerts import send_visit_alert
 
 app = Flask(__name__)
@@ -143,6 +144,61 @@ def logout():
     return redirect(url_for("landing"))
 
 
+def _require_login(error_message):
+    """Return the current user_id, or None if the session is missing/stale.
+
+    Also flashes error_message and clears a stale session, so callers only
+    need to redirect to login when this returns None.
+    """
+    user_id = session.get("user_id")
+    if not user_id:
+        flash(error_message, "error")
+        return None
+
+    if get_user_by_id(user_id) is None:
+        session.clear()
+        flash(error_message, "error")
+        return None
+
+    return user_id
+
+
+def _validate_expense_form(form):
+    """Validate expense form fields; returns (amount, category, expense_date,
+    description, error). error is None on success, all other fields may be
+    None/partial when error is set.
+    """
+    amount_raw = form.get("amount", "").strip()
+    category = form.get("category", "").strip()
+    date_raw = form.get("date", "").strip()
+    description = form.get("description", "").strip()
+
+    expense_date = None
+    try:
+        amount = float(amount_raw)
+    except ValueError:
+        amount = None
+
+    error = None
+    if amount is None or not math.isfinite(amount) or amount <= 0:
+        error = gettext("Amount must be a positive number.")
+    elif amount > MAX_EXPENSE_AMOUNT:
+        error = gettext("Amount is too large.")
+    elif len(description) > MAX_DESCRIPTION_LENGTH:
+        error = gettext("Description is too long.")
+    elif category not in EXPENSE_CATEGORIES:
+        error = gettext("Please choose a valid category.")
+    else:
+        try:
+            expense_date = datetime.strptime(date_raw, "%Y-%m-%d").date()
+            if expense_date > date.today():
+                error = gettext("Date cannot be in the future.")
+        except ValueError:
+            error = gettext("Please enter a valid date.")
+
+    return amount, category, expense_date, description, error
+
+
 def _parse_date_range(start_raw, end_raw):
     if not start_raw or not end_raw:
         return None, None
@@ -196,44 +252,15 @@ def profile():
 
 @app.route("/expenses/add", methods=["GET", "POST"])
 def add_expense():
-    user_id = session.get("user_id")
-    if not user_id:
-        flash(gettext("Please sign in to add an expense."), "error")
-        return redirect(url_for("login"))
-
-    if get_user_by_id(user_id) is None:
-        session.clear()
-        flash(gettext("Please sign in to add an expense."), "error")
+    user_id = _require_login(gettext("Please sign in to add an expense."))
+    if user_id is None:
         return redirect(url_for("login"))
 
     today = date.today().isoformat()
 
     if request.method == "POST":
-        amount_raw = request.form.get("amount", "").strip()
-        category = request.form.get("category", "").strip()
-        date_raw = request.form.get("date", "").strip()
-        description = request.form.get("description", "").strip()
-
-        error = None
-        try:
-            amount = float(amount_raw)
-        except ValueError:
-            amount = None
-        if amount is None or not math.isfinite(amount) or amount <= 0:
-            error = gettext("Amount must be a positive number.")
-        elif amount > MAX_EXPENSE_AMOUNT:
-            error = gettext("Amount is too large.")
-        elif len(description) > MAX_DESCRIPTION_LENGTH:
-            error = gettext("Description is too long.")
-        elif category not in EXPENSE_CATEGORIES:
-            error = gettext("Please choose a valid category.")
-        else:
-            try:
-                expense_date = datetime.strptime(date_raw, "%Y-%m-%d").date()
-                if expense_date > date.today():
-                    error = gettext("Date cannot be in the future.")
-            except ValueError:
-                error = gettext("Please enter a valid date.")
+        amount, category, expense_date, description, error = \
+            _validate_expense_form(request.form)
 
         if error:
             return render_template("add_expense.html", error=error,
@@ -249,14 +276,47 @@ def add_expense():
                            categories=EXPENSE_CATEGORIES, today=today, form={})
 
 
+@app.route("/expenses/<int:id>/edit", methods=["GET", "POST"])
+def edit_expense(id):
+    user_id = _require_login(gettext("Please sign in to edit an expense."))
+    if user_id is None:
+        return redirect(url_for("login"))
+
+    expense = get_expense_by_id(id, user_id)
+    if expense is None:
+        abort(404)
+
+    today = date.today().isoformat()
+
+    if request.method == "POST":
+        amount, category, expense_date, description, error = \
+            _validate_expense_form(request.form)
+
+        if error:
+            return render_template("edit_expense.html", error=error,
+                                   categories=EXPENSE_CATEGORIES,
+                                   today=today, form=request.form,
+                                   expense_id=id)
+
+        update_expense(id, user_id, amount, category,
+                       expense_date.isoformat(), description or None)
+        flash(gettext("Expense updated."), "success")
+        return redirect(url_for("profile"))
+
+    form = {
+        "amount": f"{expense['amount']:.2f}",
+        "category": expense["category"],
+        "date": expense["date"],
+        "description": expense["description"] or "",
+    }
+    return render_template("edit_expense.html",
+                           categories=EXPENSE_CATEGORIES, today=today,
+                           form=form, expense_id=id)
+
+
 # ------------------------------------------------------------------ #
 # Placeholder routes — students will implement these                  #
 # ------------------------------------------------------------------ #
-
-
-@app.route("/expenses/<int:id>/edit")
-def edit_expense(id):
-    return "Edit expense — coming in Step 8"
 
 
 @app.route("/expenses/<int:id>/delete")

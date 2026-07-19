@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-18 22:46+0300\n"
+"POT-Creation-Date: 2026-07-19 07:36+0300\n"
 "PO-Revision-Date: 2026-05-31 17:26+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,72 +18,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: app.py:88
+#: app.py:89
 msgid "All fields are required."
 msgstr ""
 
-#: app.py:92
+#: app.py:93
 msgid "Password must be at least 8 characters."
 msgstr ""
 
-#: app.py:96
+#: app.py:97
 msgid "An account with that email already exists."
 msgstr ""
 
-#: app.py:100
+#: app.py:101
 msgid "Account created — please sign in."
 msgstr ""
 
-#: app.py:123
+#: app.py:124
 msgid "Please enter your email and password."
 msgstr ""
 
-#: app.py:128
+#: app.py:129
 msgid "Invalid email or password."
 msgstr ""
 
-#: app.py:142
+#: app.py:143
 msgid "You've been signed out."
 msgstr ""
 
-#: app.py:154 app.py:158
+#: app.py:155 app.py:159
 msgid "Invalid date range — showing all expenses."
 msgstr ""
 
-#: app.py:168 app.py:174
+#: app.py:169 app.py:175
 msgid "Please sign in to view your profile."
 msgstr ""
 
-#: app.py:201 app.py:206
+#: app.py:202 app.py:207
 msgid "Please sign in to add an expense."
 msgstr ""
 
-#: app.py:223
+#: app.py:224 app.py:283
 msgid "Amount must be a positive number."
 msgstr ""
 
-#: app.py:225
+#: app.py:226 app.py:285
 msgid "Amount is too large."
 msgstr ""
 
-#: app.py:227
+#: app.py:228 app.py:287
 msgid "Description is too long."
 msgstr ""
 
-#: app.py:229
+#: app.py:230 app.py:289
 msgid "Please choose a valid category."
 msgstr ""
 
-#: app.py:234
+#: app.py:235 app.py:294
 msgid "Date cannot be in the future."
 msgstr ""
 
-#: app.py:236
+#: app.py:237 app.py:296
 msgid "Please enter a valid date."
 msgstr ""
 
-#: app.py:245
+#: app.py:246
 msgid "Expense added."
+msgstr ""
+
+#: app.py:257 app.py:262
+msgid "Please sign in to edit an expense."
+msgstr ""
+
+#: app.py:306
+msgid "Expense updated."
 msgstr ""
 
 #: templates/add_expense.html:1 templates/add_expense.html:83
@@ -98,31 +106,34 @@ msgstr ""
 msgid "Record what you spent and where"
 msgstr ""
 
-#: templates/add_expense.html:23 templates/profile.html:91
+#: templates/add_expense.html:23 templates/edit_expense.html:23
+#: templates/profile.html:123
 msgid "Amount"
 msgstr ""
 
-#: templates/add_expense.html:39 templates/profile.html:90
+#: templates/add_expense.html:39 templates/edit_expense.html:39
+#: templates/profile.html:122
 msgid "Category"
 msgstr ""
 
-#: templates/add_expense.html:50
+#: templates/add_expense.html:50 templates/edit_expense.html:50
 msgid "Choose a category"
 msgstr ""
 
-#: templates/add_expense.html:60 templates/profile.html:88
+#: templates/add_expense.html:60 templates/edit_expense.html:60
+#: templates/profile.html:120
 msgid "Date"
 msgstr ""
 
-#: templates/add_expense.html:72
+#: templates/add_expense.html:72 templates/edit_expense.html:72
 msgid "Description (optional)"
 msgstr ""
 
-#: templates/add_expense.html:79
+#: templates/add_expense.html:79 templates/edit_expense.html:79
 msgid "What was this for?"
 msgstr ""
 
-#: templates/add_expense.html:89
+#: templates/add_expense.html:89 templates/edit_expense.html:89
 msgid "Back to profile"
 msgstr ""
 
@@ -149,6 +160,22 @@ msgstr ""
 
 #: templates/base.html:69 templates/privacy.html:1 templates/privacy.html:6
 msgid "Privacy Policy"
+msgstr ""
+
+#: templates/edit_expense.html:1
+msgid "Edit expense"
+msgstr ""
+
+#: templates/edit_expense.html:12
+msgid "Edit an expense"
+msgstr ""
+
+#: templates/edit_expense.html:13
+msgid "Update the details of this expense"
+msgstr ""
+
+#: templates/edit_expense.html:83
+msgid "Save changes"
 msgstr ""
 
 #: templates/landing.html:1
@@ -196,19 +223,19 @@ msgstr ""
 msgid "EGP"
 msgstr ""
 
-#: templates/landing.html:39 templates/profile.html:14
+#: templates/landing.html:39 templates/profile.html:13
 msgid "Bills"
 msgstr ""
 
-#: templates/landing.html:46 templates/profile.html:13
+#: templates/landing.html:46 templates/profile.html:12
 msgid "Food"
 msgstr ""
 
-#: templates/landing.html:53 templates/profile.html:14
+#: templates/landing.html:53 templates/profile.html:13
 msgid "Health"
 msgstr ""
 
-#: templates/landing.html:60 templates/profile.html:14
+#: templates/landing.html:60 templates/profile.html:12
 msgid "Transport"
 msgstr ""
 
@@ -379,75 +406,79 @@ msgid ""
 "        details provided on our website."
 msgstr ""
 
-#: templates/profile.html:13
+#: templates/profile.html:12
 msgid "Shopping"
 msgstr ""
 
-#: templates/profile.html:14
+#: templates/profile.html:13
 msgid "Entertainment"
 msgstr ""
 
-#: templates/profile.html:14
+#: templates/profile.html:13
 msgid "Other"
 msgstr ""
 
-#: templates/profile.html:25
+#: templates/profile.html:26
 msgid "Member since"
 msgstr ""
 
-#: templates/profile.html:33
-msgid "From"
-msgstr ""
-
-#: templates/profile.html:38
-msgid "To"
-msgstr ""
-
-#: templates/profile.html:42
-msgid "Apply"
-msgstr ""
-
-#: templates/profile.html:46
-msgid "This month"
-msgstr ""
-
-#: templates/profile.html:48
-msgid "Last month"
-msgstr ""
-
-#: templates/profile.html:49
-msgid "All time"
-msgstr ""
-
-#: templates/profile.html:56
-msgid "Total spent"
-msgstr ""
-
-#: templates/profile.html:62
-msgid "Transactions"
-msgstr ""
-
-#: templates/profile.html:66
-msgid "Top category"
-msgstr ""
-
-#: templates/profile.html:78
-msgid "Recent transactions"
-msgstr ""
-
-#: templates/profile.html:80
+#: templates/profile.html:32
 msgid "+ Add expense"
 msgstr ""
 
-#: templates/profile.html:84 templates/profile.html:113
+#: templates/profile.html:44
+msgid "From"
+msgstr ""
+
+#: templates/profile.html:54
+msgid "To"
+msgstr ""
+
+#: templates/profile.html:64
+msgid "Apply"
+msgstr ""
+
+#: templates/profile.html:73
+msgid "This month"
+msgstr ""
+
+#: templates/profile.html:78
+msgid "Last month"
+msgstr ""
+
+#: templates/profile.html:83
+msgid "All time"
+msgstr ""
+
+#: templates/profile.html:91
+msgid "Total spent"
+msgstr ""
+
+#: templates/profile.html:97
+msgid "Transactions"
+msgstr ""
+
+#: templates/profile.html:101
+msgid "Top category"
+msgstr ""
+
+#: templates/profile.html:113
+msgid "Recent transactions"
+msgstr ""
+
+#: templates/profile.html:116 templates/profile.html:151
 msgid "No expenses yet."
 msgstr ""
 
-#: templates/profile.html:89
+#: templates/profile.html:121
 msgid "Description"
 msgstr ""
 
-#: templates/profile.html:111
+#: templates/profile.html:140
+msgid "Edit"
+msgstr ""
+
+#: templates/profile.html:149
 msgid "By category"
 msgstr ""
 
