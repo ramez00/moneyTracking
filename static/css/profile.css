@@ -77,7 +77,10 @@
   gap: 1.25rem;
 }
 
-.profile-user-add-btn {
+.profile-user-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   margin-inline-start: auto;
 }
 

@@ -26,11 +26,18 @@ _('Bills'), _('Health'), _('Entertainment'), _('Other')] %}
           >{{ _('Member since') }} {{ user['created_at']|friendly_date }}</span
         >
       </div>
-      <a
-        href="{{ url_for('add_expense') }}"
-        class="btn-primary profile-add-btn profile-user-add-btn"
-        >{{ _('+ Add expense') }}</a
-      >
+      <div class="profile-user-actions">
+        <a
+          href="{{ url_for('edit_profile') }}"
+          class="btn-ghost profile-add-btn"
+          >{{ _('Edit profile') }}</a
+        >
+        <a
+          href="{{ url_for('add_expense') }}"
+          class="btn-primary profile-add-btn"
+          >{{ _('+ Add expense') }}</a
+        >
+      </div>
     </div>
 
     <!-- Date range filter -->
