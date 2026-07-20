@@ -267,7 +267,7 @@
 
 .profile-table-head {
   display: grid;
-  grid-template-columns: 90px 1fr 110px 100px 48px;
+  grid-template-columns: 90px 1fr 110px 100px 100px;
   gap: 0.75rem;
   padding-bottom: 0.6rem;
   border-bottom: 1px solid var(--border-soft);
@@ -280,7 +280,7 @@
 
 .profile-expense-row {
   display: grid;
-  grid-template-columns: 90px 1fr 110px 100px 48px;
+  grid-template-columns: 90px 1fr 110px 100px 100px;
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 0;
@@ -309,16 +309,81 @@
   border-radius: 999px;
 }
 
-.profile-exp-edit {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--accent);
-  text-decoration: none;
+.profile-exp-actions {
+  display: flex;
+  gap: 0.75rem;
   justify-self: end;
 }
 
-.profile-exp-edit:hover {
+.profile-exp-edit,
+.profile-exp-delete {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.profile-exp-edit {
+  color: var(--accent);
+}
+
+.profile-exp-delete {
+  color: var(--danger);
+}
+
+.profile-exp-edit:hover,
+.profile-exp-delete:hover {
   text-decoration: underline;
+}
+
+/* Delete-expense confirmation page: read-only summary rows */
+.delete-summary {
+  margin-bottom: 1.5rem;
+}
+
+.delete-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+}
+
+.delete-summary-row + .delete-summary-row {
+  border-top: 1px solid var(--border-soft);
+}
+
+.delete-summary-row dt {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.delete-summary-row dd {
+  font-size: 0.9rem;
+  color: var(--ink);
+  text-align: right;
+}
+
+/* Danger button — mirrors .btn-submit (style.css) sizing, uses --danger */
+.btn-danger {
+  display: block;
+  width: 100%;
+  padding: 0.7rem;
+  background: var(--danger);
+  color: var(--paper-card);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  transition: filter 0.2s;
+}
+
+.btn-danger:hover {
+  filter: brightness(0.88);
 }
 
 /* Category color mapping, shared by bars and badges */
@@ -454,12 +519,12 @@ html[dir="rtl"] .profile-filter-field label {
     grid-template-areas:
       "date amt"
       "desc desc"
-      "cat edit";
+      "cat actions";
     row-gap: 0.35rem;
   }
 
-  .profile-exp-edit {
-    grid-area: edit;
+  .profile-exp-actions {
+    grid-area: actions;
   }
 
   .profile-exp-date {

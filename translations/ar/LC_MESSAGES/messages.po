@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-19 07:36+0300\n"
+"POT-Creation-Date: 2026-07-20 07:27+0300\n"
 "PO-Revision-Date: 2026-05-31 17:26+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ar\n"
@@ -19,81 +19,89 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: app.py:89
+#: app.py:90
 msgid "All fields are required."
 msgstr "جميع الحقول مطلوبة."
 
-#: app.py:93
+#: app.py:94
 msgid "Password must be at least 8 characters."
 msgstr "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل."
 
-#: app.py:97
+#: app.py:98
 msgid "An account with that email already exists."
 msgstr "يوجد حساب مسجل بهذا البريد الإلكتروني بالفعل."
 
-#: app.py:101
+#: app.py:102
 msgid "Account created — please sign in."
 msgstr "تم إنشاء الحساب بنجاح — يرجى تسجيل الدخول."
 
-#: app.py:124
+#: app.py:125
 msgid "Please enter your email and password."
 msgstr "يرجى إدخال بريدك الإلكتروني وكلمة المرور."
 
-#: app.py:129
+#: app.py:130
 msgid "Invalid email or password."
 msgstr "البريد الإلكتروني أو كلمة المرور غير صحيحة."
 
-#: app.py:143
+#: app.py:144
 msgid "You've been signed out."
 msgstr "تم تسجيل خروجك."
 
-#: app.py:155 app.py:159
-msgid "Invalid date range — showing all expenses."
-msgstr "نطاق تاريخ غير صالح — يتم عرض كل المصروفات."
-
-#: app.py:169 app.py:175
-msgid "Please sign in to view your profile."
-msgstr "يرجى تسجيل الدخول لعرض ملفك الشخصي."
-
-#: app.py:202 app.py:207
-msgid "Please sign in to add an expense."
-msgstr "يرجى تسجيل الدخول لإضافة نفقة."
-
-#: app.py:224 app.py:283
+#: app.py:185
 msgid "Amount must be a positive number."
 msgstr "يجب أن يكون المبلغ رقماً موجباً."
 
-#: app.py:226 app.py:285
+#: app.py:187
 msgid "Amount is too large."
 msgstr "المبلغ كبير جداً."
 
-#: app.py:228 app.py:287
+#: app.py:189
 msgid "Description is too long."
 msgstr "الوصف طويل جداً."
 
-#: app.py:230 app.py:289
+#: app.py:191
 msgid "Please choose a valid category."
 msgstr "يرجى اختيار فئة صحيحة."
 
-#: app.py:235 app.py:294
+#: app.py:196
 msgid "Date cannot be in the future."
 msgstr "لا يمكن أن يكون التاريخ في المستقبل."
 
-#: app.py:237 app.py:296
+#: app.py:198
 msgid "Please enter a valid date."
 msgstr "يرجى إدخال تاريخ صحيح."
 
-#: app.py:246
+#: app.py:211 app.py:215
+msgid "Invalid date range — showing all expenses."
+msgstr "نطاق تاريخ غير صالح — يتم عرض كل المصروفات."
+
+#: app.py:225 app.py:231
+msgid "Please sign in to view your profile."
+msgstr "يرجى تسجيل الدخول لعرض ملفك الشخصي."
+
+#: app.py:256
+msgid "Please sign in to add an expense."
+msgstr "يرجى تسجيل الدخول لإضافة نفقة."
+
+#: app.py:273
 msgid "Expense added."
 msgstr "تمت إضافة النفقة."
 
-#: app.py:257 app.py:262
+#: app.py:282
 msgid "Please sign in to edit an expense."
 msgstr "يرجى تسجيل الدخول لتعديل نفقة."
 
-#: app.py:306
+#: app.py:304
 msgid "Expense updated."
 msgstr "تم تحديث النفقة."
+
+#: app.py:320
+msgid "Please sign in to delete an expense."
+msgstr "يرجى تسجيل الدخول لحذف نفقة."
+
+#: app.py:330
+msgid "Expense deleted."
+msgstr "تم حذف النفقة."
 
 #: templates/add_expense.html:1 templates/add_expense.html:83
 msgid "Add expense"
@@ -107,13 +115,13 @@ msgstr "إضافة نفقة"
 msgid "Record what you spent and where"
 msgstr "سجّل ما أنفقته وأين"
 
-#: templates/add_expense.html:23 templates/edit_expense.html:23
-#: templates/profile.html:123
+#: templates/add_expense.html:23 templates/delete_expense.html:28
+#: templates/edit_expense.html:23 templates/profile.html:123
 msgid "Amount"
 msgstr "المبلغ"
 
-#: templates/add_expense.html:39 templates/edit_expense.html:39
-#: templates/profile.html:122
+#: templates/add_expense.html:39 templates/delete_expense.html:24
+#: templates/edit_expense.html:39 templates/profile.html:122
 msgid "Category"
 msgstr "الفئة"
 
@@ -121,8 +129,8 @@ msgstr "الفئة"
 msgid "Choose a category"
 msgstr "اختر فئة"
 
-#: templates/add_expense.html:60 templates/edit_expense.html:60
-#: templates/profile.html:120
+#: templates/add_expense.html:60 templates/delete_expense.html:20
+#: templates/edit_expense.html:60 templates/profile.html:120
 msgid "Date"
 msgstr "التاريخ"
 
@@ -162,6 +170,29 @@ msgstr "الشروط والأحكام"
 #: templates/base.html:69 templates/privacy.html:1 templates/privacy.html:6
 msgid "Privacy Policy"
 msgstr "سياسة الخصوصية"
+
+#: templates/delete_expense.html:1 templates/delete_expense.html:11
+#: templates/delete_expense.html:41
+msgid "Delete expense"
+msgstr "حذف نفقة"
+
+#: templates/delete_expense.html:13
+msgid ""
+"This will permanently remove this expense. This action cannot\n"
+"        be undone."
+msgstr "سيؤدي هذا إلى إزالة هذه النفقة نهائيًا. لا يمكن التراجع عن هذا الإجراء."
+
+#: templates/delete_expense.html:32 templates/profile.html:121
+msgid "Description"
+msgstr "الوصف"
+
+#: templates/delete_expense.html:33
+msgid "—"
+msgstr "—"
+
+#: templates/delete_expense.html:46
+msgid "Cancel"
+msgstr "إلغاء"
 
 #: templates/edit_expense.html:1
 msgid "Edit expense"
@@ -489,19 +520,19 @@ msgstr "الفئة الأكثر إنفاقاً"
 msgid "Recent transactions"
 msgstr "أحدث المعاملات"
 
-#: templates/profile.html:116 templates/profile.html:151
+#: templates/profile.html:116 templates/profile.html:158
 msgid "No expenses yet."
 msgstr "لا توجد نفقات بعد."
 
-#: templates/profile.html:121
-msgid "Description"
-msgstr "الوصف"
-
-#: templates/profile.html:140
+#: templates/profile.html:141
 msgid "Edit"
 msgstr "تعديل"
 
-#: templates/profile.html:149
+#: templates/profile.html:146
+msgid "Delete"
+msgstr "حذف"
+
+#: templates/profile.html:156
 msgid "By category"
 msgstr "حسب الفئة"
 

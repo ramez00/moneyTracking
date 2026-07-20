@@ -9,7 +9,8 @@ import os
 from database.db import (get_db, init_db, seed_db, get_user_by_email,
                          create_user, get_user_by_id, get_expense_summary,
                          get_expenses_by_user, create_expense,
-                         get_expense_by_id, update_expense)
+                         get_expense_by_id, update_expense,
+                         delete_expense as delete_expense_row)
 from alerts import send_visit_alert
 
 app = Flask(__name__)
@@ -314,14 +315,22 @@ def edit_expense(id):
                            form=form, expense_id=id)
 
 
-# ------------------------------------------------------------------ #
-# Placeholder routes — students will implement these                  #
-# ------------------------------------------------------------------ #
-
-
-@app.route("/expenses/<int:id>/delete")
+@app.route("/expenses/<int:id>/delete", methods=["GET", "POST"])
 def delete_expense(id):
-    return "Delete expense — coming in Step 9"
+    user_id = _require_login(gettext("Please sign in to delete an expense."))
+    if user_id is None:
+        return redirect(url_for("login"))
+
+    expense = get_expense_by_id(id, user_id)
+    if expense is None:
+        abort(404)
+
+    if request.method == "POST":
+        delete_expense_row(id, user_id)
+        flash(gettext("Expense deleted."), "success")
+        return redirect(url_for("profile"))
+
+    return render_template("delete_expense.html", expense=expense)
 
 
 if __name__ == "__main__":
