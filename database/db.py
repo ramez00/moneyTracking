@@ -123,6 +123,22 @@ def get_user_by_id(user_id):
     return user
 
 
+def update_user(user_id, name, email, password_hash=None):
+    conn = get_db()
+    if password_hash is not None:
+        conn.execute(
+            "UPDATE users SET name = ?, email = ?, password_hash = ? WHERE id = ?",
+            (name, email, password_hash, user_id),
+        )
+    else:
+        conn.execute(
+            "UPDATE users SET name = ?, email = ? WHERE id = ?",
+            (name, email, user_id),
+        )
+    conn.commit()
+    conn.close()
+
+
 def get_expenses_by_user(user_id, start_date=None, end_date=None):
     conn = get_db()
     query = "SELECT id, amount, category, date, description FROM expenses WHERE user_id = ?"

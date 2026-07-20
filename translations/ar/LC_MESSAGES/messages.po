@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-20 07:27+0300\n"
+"POT-Creation-Date: 2026-07-20 08:38+0300\n"
 "PO-Revision-Date: 2026-05-31 17:26+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ar\n"
@@ -19,87 +19,107 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: app.py:90
+#: app.py:91 app.py:217
 msgid "All fields are required."
 msgstr "جميع الحقول مطلوبة."
 
-#: app.py:94
+#: app.py:95
 msgid "Password must be at least 8 characters."
 msgstr "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل."
 
-#: app.py:98
+#: app.py:99 app.py:298
 msgid "An account with that email already exists."
 msgstr "يوجد حساب مسجل بهذا البريد الإلكتروني بالفعل."
 
-#: app.py:102
+#: app.py:103
 msgid "Account created — please sign in."
 msgstr "تم إنشاء الحساب بنجاح — يرجى تسجيل الدخول."
 
-#: app.py:125
+#: app.py:126
 msgid "Please enter your email and password."
 msgstr "يرجى إدخال بريدك الإلكتروني وكلمة المرور."
 
-#: app.py:130
+#: app.py:131
 msgid "Invalid email or password."
 msgstr "البريد الإلكتروني أو كلمة المرور غير صحيحة."
 
-#: app.py:144
+#: app.py:145
 msgid "You've been signed out."
 msgstr "تم تسجيل خروجك."
 
-#: app.py:185
+#: app.py:186
 msgid "Amount must be a positive number."
 msgstr "يجب أن يكون المبلغ رقماً موجباً."
 
-#: app.py:187
+#: app.py:188
 msgid "Amount is too large."
 msgstr "المبلغ كبير جداً."
 
-#: app.py:189
+#: app.py:190
 msgid "Description is too long."
 msgstr "الوصف طويل جداً."
 
-#: app.py:191
+#: app.py:192
 msgid "Please choose a valid category."
 msgstr "يرجى اختيار فئة صحيحة."
 
-#: app.py:196
+#: app.py:197
 msgid "Date cannot be in the future."
 msgstr "لا يمكن أن يكون التاريخ في المستقبل."
 
-#: app.py:198
+#: app.py:199
 msgid "Please enter a valid date."
 msgstr "يرجى إدخال تاريخ صحيح."
 
-#: app.py:211 app.py:215
+#: app.py:220
+msgid "New password must be at least 8 characters."
+msgstr "يجب أن تتكون كلمة المرور الجديدة من 8 أحرف على الأقل."
+
+#: app.py:222
+msgid "New password and confirmation do not match."
+msgstr "كلمة المرور الجديدة وتأكيدها غير متطابقين."
+
+#: app.py:235 app.py:239
 msgid "Invalid date range — showing all expenses."
 msgstr "نطاق تاريخ غير صالح — يتم عرض كل المصروفات."
 
-#: app.py:225 app.py:231
+#: app.py:249 app.py:255
 msgid "Please sign in to view your profile."
 msgstr "يرجى تسجيل الدخول لعرض ملفك الشخصي."
 
-#: app.py:256
+#: app.py:280
+msgid "Please sign in to edit your profile."
+msgstr "يرجى تسجيل الدخول لتعديل ملفك الشخصي."
+
+#: app.py:293
+msgid "Current password is incorrect."
+msgstr "كلمة المرور الحالية غير صحيحة."
+
+#: app.py:308
+msgid "Profile updated."
+msgstr "تم تحديث الملف الشخصي."
+
+#: app.py:317
 msgid "Please sign in to add an expense."
 msgstr "يرجى تسجيل الدخول لإضافة نفقة."
 
-#: app.py:273
+#: app.py:334
 msgid "Expense added."
 msgstr "تمت إضافة النفقة."
 
-#: app.py:282
+#: app.py:343
 msgid "Please sign in to edit an expense."
 msgstr "يرجى تسجيل الدخول لتعديل نفقة."
 
-#: app.py:304
+#: app.py:365
 msgid "Expense updated."
 msgstr "تم تحديث النفقة."
 
-#: app.py:320
+#: app.py:381
 msgid "Please sign in to delete an expense."
 msgstr "يرجى تسجيل الدخول لحذف نفقة."
 
-#: app.py:330
+#: app.py:391
 msgid "Expense deleted."
 msgstr "تم حذف النفقة."
 
@@ -116,12 +136,12 @@ msgid "Record what you spent and where"
 msgstr "سجّل ما أنفقته وأين"
 
 #: templates/add_expense.html:23 templates/delete_expense.html:28
-#: templates/edit_expense.html:23 templates/profile.html:123
+#: templates/edit_expense.html:23 templates/profile.html:130
 msgid "Amount"
 msgstr "المبلغ"
 
 #: templates/add_expense.html:39 templates/delete_expense.html:24
-#: templates/edit_expense.html:39 templates/profile.html:122
+#: templates/edit_expense.html:39 templates/profile.html:129
 msgid "Category"
 msgstr "الفئة"
 
@@ -130,7 +150,7 @@ msgid "Choose a category"
 msgstr "اختر فئة"
 
 #: templates/add_expense.html:60 templates/delete_expense.html:20
-#: templates/edit_expense.html:60 templates/profile.html:120
+#: templates/edit_expense.html:60 templates/profile.html:127
 msgid "Date"
 msgstr "التاريخ"
 
@@ -143,6 +163,7 @@ msgid "What was this for?"
 msgstr "ما الغرض من هذا الإنفاق؟"
 
 #: templates/add_expense.html:89 templates/edit_expense.html:89
+#: templates/edit_profile.html:78
 msgid "Back to profile"
 msgstr "العودة إلى الملف الشخصي"
 
@@ -182,7 +203,7 @@ msgid ""
 "        be undone."
 msgstr "سيؤدي هذا إلى إزالة هذه النفقة نهائيًا. لا يمكن التراجع عن هذا الإجراء."
 
-#: templates/delete_expense.html:32 templates/profile.html:121
+#: templates/delete_expense.html:32 templates/profile.html:128
 msgid "Description"
 msgstr "الوصف"
 
@@ -206,9 +227,54 @@ msgstr "تعديل نفقة"
 msgid "Update the details of this expense"
 msgstr "حدّث تفاصيل هذه النفقة"
 
-#: templates/edit_expense.html:83
+#: templates/edit_expense.html:83 templates/edit_profile.html:72
 msgid "Save changes"
 msgstr "حفظ التغييرات"
+
+#: templates/edit_profile.html:1 templates/profile.html:33
+msgid "Edit profile"
+msgstr "تعديل الملف الشخصي"
+
+#: templates/edit_profile.html:7
+msgid "Edit your profile"
+msgstr "تعديل ملفك الشخصي"
+
+#: templates/edit_profile.html:8
+msgid "Update your name, email, or password"
+msgstr "حدّث اسمك أو بريدك الإلكتروني أو كلمة المرور"
+
+#: templates/edit_profile.html:18 templates/register.html:18
+msgid "Full name"
+msgstr "الاسم الكامل"
+
+#: templates/edit_profile.html:30 templates/login.html:18
+#: templates/register.html:30
+msgid "Email address"
+msgstr "عنوان البريد الإلكتروني"
+
+#: templates/edit_profile.html:41
+msgid "Current password"
+msgstr "كلمة المرور الحالية"
+
+#: templates/edit_profile.html:47
+msgid "Required to save any change"
+msgstr "مطلوبة لحفظ أي تغيير"
+
+#: templates/edit_profile.html:52
+msgid "New password (optional)"
+msgstr "كلمة المرور الجديدة (اختياري)"
+
+#: templates/edit_profile.html:58
+msgid "Leave blank to keep your current password"
+msgstr "اتركها فارغة للاحتفاظ بكلمة المرور الحالية"
+
+#: templates/edit_profile.html:62
+msgid "Confirm new password"
+msgstr "تأكيد كلمة المرور الجديدة"
+
+#: templates/edit_profile.html:68
+msgid "Re-enter your new password"
+msgstr "أعد إدخال كلمة المرور الجديدة"
 
 #: templates/landing.html:1
 msgid "Track Every Pound"
@@ -362,10 +428,6 @@ msgstr "أهلا وسهلا"
 msgid "Sign in to your Spendly account"
 msgstr "سجل الدخول إلى حسابك في Spendly"
 
-#: templates/login.html:18 templates/register.html:30
-msgid "Email address"
-msgstr "عنوان البريد الإلكتروني"
-
 #: templates/login.html:30 templates/register.html:41
 msgid "Password"
 msgstr "كلمة المرور"
@@ -476,63 +538,63 @@ msgstr "أخرى"
 msgid "Member since"
 msgstr "عضو منذ"
 
-#: templates/profile.html:32
+#: templates/profile.html:38
 msgid "+ Add expense"
 msgstr "+ إضافة نفقة"
 
-#: templates/profile.html:44
+#: templates/profile.html:51
 msgid "From"
 msgstr "من"
 
-#: templates/profile.html:54
+#: templates/profile.html:61
 msgid "To"
 msgstr "إلى"
 
-#: templates/profile.html:64
+#: templates/profile.html:71
 msgid "Apply"
 msgstr "تطبيق"
 
-#: templates/profile.html:73
+#: templates/profile.html:80
 msgid "This month"
 msgstr "هذا الشهر"
 
-#: templates/profile.html:78
+#: templates/profile.html:85
 msgid "Last month"
 msgstr "الشهر الماضي"
 
-#: templates/profile.html:83
+#: templates/profile.html:90
 msgid "All time"
 msgstr "كل الوقت"
 
-#: templates/profile.html:91
+#: templates/profile.html:98
 msgid "Total spent"
 msgstr "إجمالي المصروف"
 
-#: templates/profile.html:97
+#: templates/profile.html:104
 msgid "Transactions"
 msgstr "المعاملات"
 
-#: templates/profile.html:101
+#: templates/profile.html:108
 msgid "Top category"
 msgstr "الفئة الأكثر إنفاقاً"
 
-#: templates/profile.html:113
+#: templates/profile.html:120
 msgid "Recent transactions"
 msgstr "أحدث المعاملات"
 
-#: templates/profile.html:116 templates/profile.html:158
+#: templates/profile.html:123 templates/profile.html:165
 msgid "No expenses yet."
 msgstr "لا توجد نفقات بعد."
 
-#: templates/profile.html:141
+#: templates/profile.html:148
 msgid "Edit"
 msgstr "تعديل"
 
-#: templates/profile.html:146
+#: templates/profile.html:153
 msgid "Delete"
 msgstr "حذف"
 
-#: templates/profile.html:156
+#: templates/profile.html:163
 msgid "By category"
 msgstr "حسب الفئة"
 
@@ -547,10 +609,6 @@ msgstr "أنشئ حسابك"
 #: templates/register.html:8
 msgid "Start tracking your expenses today"
 msgstr "ابدأ تتبع نفقاتك اليوم"
-
-#: templates/register.html:18
-msgid "Full name"
-msgstr "الاسم الكامل"
 
 #: templates/register.html:47
 msgid "Min. 8 characters"

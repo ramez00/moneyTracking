@@ -7,7 +7,8 @@ import math
 import os
 
 from database.db import (get_db, init_db, seed_db, get_user_by_email,
-                         create_user, get_user_by_id, get_expense_summary,
+                         create_user, get_user_by_id, update_user,
+                         get_expense_summary,
                          get_expenses_by_user, create_expense,
                          get_expense_by_id, update_expense,
                          delete_expense as delete_expense_row)
@@ -200,6 +201,29 @@ def _validate_expense_form(form):
     return amount, category, expense_date, description, error
 
 
+def _validate_profile_form(form):
+    """Validate profile-edit form fields (no DB access); returns
+    (name, email, current_password, new_password, error). error is None on
+    success.
+    """
+    name = form.get("name", "").strip()
+    email = form.get("email", "").strip().lower()
+    current_password = form.get("current_password", "")
+    new_password = form.get("new_password", "")
+    confirm_password = form.get("confirm_password", "")
+
+    error = None
+    if not name or not email or not current_password:
+        error = gettext("All fields are required.")
+    elif new_password or confirm_password:
+        if len(new_password) < 8:
+            error = gettext("New password must be at least 8 characters.")
+        elif new_password != confirm_password:
+            error = gettext("New password and confirmation do not match.")
+
+    return name, email, current_password, new_password, error
+
+
 def _parse_date_range(start_raw, end_raw):
     if not start_raw or not end_raw:
         return None, None
@@ -249,6 +273,43 @@ def profile():
         last_month_start=last_month_start.isoformat(),
         last_month_end=last_month_end.isoformat(),
     )
+
+
+@app.route("/profile/edit", methods=["GET", "POST"])
+def edit_profile():
+    user_id = _require_login(gettext("Please sign in to edit your profile."))
+    if user_id is None:
+        return redirect(url_for("login"))
+
+    user = get_user_by_id(user_id)
+    if user is None:
+        abort(404)
+
+    if request.method == "POST":
+        name, email, current_password, new_password, error = \
+            _validate_profile_form(request.form)
+
+        if not error and not check_password_hash(user["password_hash"], current_password):
+            error = gettext("Current password is incorrect.")
+
+        if not error and email != user["email"]:
+            existing = get_user_by_email(email)
+            if existing is not None and existing["id"] != user_id:
+                error = gettext("An account with that email already exists.")
+
+        if error:
+            form = {"name": name, "email": email}
+            return render_template("edit_profile.html", error=error, form=form)
+
+        password_hash = generate_password_hash(new_password) if new_password else None
+        update_user(user_id, name, email, password_hash)
+
+        session["user_name"] = name
+        flash(gettext("Profile updated."), "success")
+        return redirect(url_for("profile"))
+
+    form = {"name": user["name"], "email": user["email"]}
+    return render_template("edit_profile.html", form=form)
 
 
 @app.route("/expenses/add", methods=["GET", "POST"])

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-07-20 07:27+0300\n"
+"POT-Creation-Date: 2026-07-20 08:38+0300\n"
 "PO-Revision-Date: 2026-05-31 17:26+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,87 +18,107 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
-#: app.py:90
+#: app.py:91 app.py:217
 msgid "All fields are required."
 msgstr ""
 
-#: app.py:94
+#: app.py:95
 msgid "Password must be at least 8 characters."
 msgstr ""
 
-#: app.py:98
+#: app.py:99 app.py:298
 msgid "An account with that email already exists."
 msgstr ""
 
-#: app.py:102
+#: app.py:103
 msgid "Account created — please sign in."
 msgstr ""
 
-#: app.py:125
+#: app.py:126
 msgid "Please enter your email and password."
 msgstr ""
 
-#: app.py:130
+#: app.py:131
 msgid "Invalid email or password."
 msgstr ""
 
-#: app.py:144
+#: app.py:145
 msgid "You've been signed out."
 msgstr ""
 
-#: app.py:185
+#: app.py:186
 msgid "Amount must be a positive number."
 msgstr ""
 
-#: app.py:187
+#: app.py:188
 msgid "Amount is too large."
 msgstr ""
 
-#: app.py:189
+#: app.py:190
 msgid "Description is too long."
 msgstr ""
 
-#: app.py:191
+#: app.py:192
 msgid "Please choose a valid category."
 msgstr ""
 
-#: app.py:196
+#: app.py:197
 msgid "Date cannot be in the future."
 msgstr ""
 
-#: app.py:198
+#: app.py:199
 msgid "Please enter a valid date."
 msgstr ""
 
-#: app.py:211 app.py:215
+#: app.py:220
+msgid "New password must be at least 8 characters."
+msgstr ""
+
+#: app.py:222
+msgid "New password and confirmation do not match."
+msgstr ""
+
+#: app.py:235 app.py:239
 msgid "Invalid date range — showing all expenses."
 msgstr ""
 
-#: app.py:225 app.py:231
+#: app.py:249 app.py:255
 msgid "Please sign in to view your profile."
 msgstr ""
 
-#: app.py:256
+#: app.py:280
+msgid "Please sign in to edit your profile."
+msgstr ""
+
+#: app.py:293
+msgid "Current password is incorrect."
+msgstr ""
+
+#: app.py:308
+msgid "Profile updated."
+msgstr ""
+
+#: app.py:317
 msgid "Please sign in to add an expense."
 msgstr ""
 
-#: app.py:273
+#: app.py:334
 msgid "Expense added."
 msgstr ""
 
-#: app.py:282
+#: app.py:343
 msgid "Please sign in to edit an expense."
 msgstr ""
 
-#: app.py:304
+#: app.py:365
 msgid "Expense updated."
 msgstr ""
 
-#: app.py:320
+#: app.py:381
 msgid "Please sign in to delete an expense."
 msgstr ""
 
-#: app.py:330
+#: app.py:391
 msgid "Expense deleted."
 msgstr ""
 
@@ -115,12 +135,12 @@ msgid "Record what you spent and where"
 msgstr ""
 
 #: templates/add_expense.html:23 templates/delete_expense.html:28
-#: templates/edit_expense.html:23 templates/profile.html:123
+#: templates/edit_expense.html:23 templates/profile.html:130
 msgid "Amount"
 msgstr ""
 
 #: templates/add_expense.html:39 templates/delete_expense.html:24
-#: templates/edit_expense.html:39 templates/profile.html:122
+#: templates/edit_expense.html:39 templates/profile.html:129
 msgid "Category"
 msgstr ""
 
@@ -129,7 +149,7 @@ msgid "Choose a category"
 msgstr ""
 
 #: templates/add_expense.html:60 templates/delete_expense.html:20
-#: templates/edit_expense.html:60 templates/profile.html:120
+#: templates/edit_expense.html:60 templates/profile.html:127
 msgid "Date"
 msgstr ""
 
@@ -142,6 +162,7 @@ msgid "What was this for?"
 msgstr ""
 
 #: templates/add_expense.html:89 templates/edit_expense.html:89
+#: templates/edit_profile.html:78
 msgid "Back to profile"
 msgstr ""
 
@@ -181,7 +202,7 @@ msgid ""
 "        be undone."
 msgstr ""
 
-#: templates/delete_expense.html:32 templates/profile.html:121
+#: templates/delete_expense.html:32 templates/profile.html:128
 msgid "Description"
 msgstr ""
 
@@ -205,8 +226,53 @@ msgstr ""
 msgid "Update the details of this expense"
 msgstr ""
 
-#: templates/edit_expense.html:83
+#: templates/edit_expense.html:83 templates/edit_profile.html:72
 msgid "Save changes"
+msgstr ""
+
+#: templates/edit_profile.html:1 templates/profile.html:33
+msgid "Edit profile"
+msgstr ""
+
+#: templates/edit_profile.html:7
+msgid "Edit your profile"
+msgstr ""
+
+#: templates/edit_profile.html:8
+msgid "Update your name, email, or password"
+msgstr ""
+
+#: templates/edit_profile.html:18 templates/register.html:18
+msgid "Full name"
+msgstr ""
+
+#: templates/edit_profile.html:30 templates/login.html:18
+#: templates/register.html:30
+msgid "Email address"
+msgstr ""
+
+#: templates/edit_profile.html:41
+msgid "Current password"
+msgstr ""
+
+#: templates/edit_profile.html:47
+msgid "Required to save any change"
+msgstr ""
+
+#: templates/edit_profile.html:52
+msgid "New password (optional)"
+msgstr ""
+
+#: templates/edit_profile.html:58
+msgid "Leave blank to keep your current password"
+msgstr ""
+
+#: templates/edit_profile.html:62
+msgid "Confirm new password"
+msgstr ""
+
+#: templates/edit_profile.html:68
+msgid "Re-enter your new password"
 msgstr ""
 
 #: templates/landing.html:1
@@ -353,10 +419,6 @@ msgstr ""
 msgid "Sign in to your Spendly account"
 msgstr ""
 
-#: templates/login.html:18 templates/register.html:30
-msgid "Email address"
-msgstr ""
-
 #: templates/login.html:30 templates/register.html:41
 msgid "Password"
 msgstr ""
@@ -453,63 +515,63 @@ msgstr ""
 msgid "Member since"
 msgstr ""
 
-#: templates/profile.html:32
+#: templates/profile.html:38
 msgid "+ Add expense"
 msgstr ""
 
-#: templates/profile.html:44
+#: templates/profile.html:51
 msgid "From"
 msgstr ""
 
-#: templates/profile.html:54
+#: templates/profile.html:61
 msgid "To"
 msgstr ""
 
-#: templates/profile.html:64
+#: templates/profile.html:71
 msgid "Apply"
 msgstr ""
 
-#: templates/profile.html:73
+#: templates/profile.html:80
 msgid "This month"
 msgstr ""
 
-#: templates/profile.html:78
+#: templates/profile.html:85
 msgid "Last month"
 msgstr ""
 
-#: templates/profile.html:83
+#: templates/profile.html:90
 msgid "All time"
 msgstr ""
 
-#: templates/profile.html:91
+#: templates/profile.html:98
 msgid "Total spent"
 msgstr ""
 
-#: templates/profile.html:97
+#: templates/profile.html:104
 msgid "Transactions"
 msgstr ""
 
-#: templates/profile.html:101
+#: templates/profile.html:108
 msgid "Top category"
 msgstr ""
 
-#: templates/profile.html:113
+#: templates/profile.html:120
 msgid "Recent transactions"
 msgstr ""
 
-#: templates/profile.html:116 templates/profile.html:158
+#: templates/profile.html:123 templates/profile.html:165
 msgid "No expenses yet."
 msgstr ""
 
-#: templates/profile.html:141
+#: templates/profile.html:148
 msgid "Edit"
 msgstr ""
 
-#: templates/profile.html:146
+#: templates/profile.html:153
 msgid "Delete"
 msgstr ""
 
-#: templates/profile.html:156
+#: templates/profile.html:163
 msgid "By category"
 msgstr ""
 
@@ -523,10 +585,6 @@ msgstr ""
 
 #: templates/register.html:8
 msgid "Start tracking your expenses today"
-msgstr ""
-
-#: templates/register.html:18
-msgid "Full name"
 msgstr ""
 
 #: templates/register.html:47
